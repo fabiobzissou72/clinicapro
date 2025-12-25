@@ -1,0 +1,36 @@
+.app {
+    display: flex;
+    min-height: 100vh;
+    background: var(--bg-primary);
+}
+
+.app-content {
+    flex: 1;
+    margin-left: 260px;
+    display: flex;
+    flex-direction: column;
+    transition: var(--transition);
+}
+
+.main-content {
+    flex: 1;
+    overflow-y: auto;
+}
+
+.page-placeholder {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 60vh;
+    font-size: 1.5rem;
+    color: var(--text-tertiary);
+    text-align: center;
+    padding: 2rem;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .app-content {
+        margin-left: 70px;
+    }
+}

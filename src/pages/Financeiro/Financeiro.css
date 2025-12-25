@@ -1,0 +1,271 @@
+.financeiro {
+    padding: 2rem;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.financeiro-loading {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 60vh;
+    gap: 1rem;
+}
+
+.financeiro-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+}
+
+.date-selector {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-lg);
+    padding: 0.75rem 1.5rem;
+}
+
+.date-nav-btn {
+    width: 36px;
+    height: 36px;
+    border-radius: var(--radius-md);
+    background: var(--bg-tertiary);
+    border: 1px solid var(--border-color);
+    color: var(--text-primary);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: var(--transition);
+}
+
+.date-nav-btn:hover {
+    background: var(--primary);
+    color: white;
+    border-color: var(--primary);
+}
+
+.date-display {
+    font-weight: 700;
+    color: var(--text-primary);
+    min-width: 200px;
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 0.875rem;
+}
+
+.finance-section {
+    margin-bottom: 2rem;
+    border-radius: var(--radius-lg);
+    padding: 1.5rem;
+    animation: fadeIn 0.5s ease-out;
+}
+
+.finance-section.green-section {
+    background: linear-gradient(135deg, #D1FAE5, #A7F3D0);
+    border: 2px solid #10B981;
+}
+
+.finance-section.red-section {
+    background: linear-gradient(135deg, #FEE2E2, #FECACA);
+    border: 2px solid #EF4444;
+}
+
+.finance-section-title {
+    font-size: 1.125rem;
+    font-weight: 700;
+    margin: 0 0 1.5rem 0;
+    color: var(--text-primary);
+}
+
+.finance-cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.finance-card {
+    background: white;
+    border-radius: var(--radius-md);
+    padding: 1.5rem;
+    text-align: center;
+    box-shadow: var(--shadow-md);
+    transition: var(--transition);
+}
+
+.finance-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-xl);
+}
+
+.finance-card.green {
+    border-left: 4px solid #10B981;
+}
+
+.finance-card.gray {
+    border-left: 4px solid #64748B;
+}
+
+.finance-card.red {
+    border-left: 4px solid #EF4444;
+}
+
+.finance-value {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin: 0 0 0.5rem 0;
+}
+
+.finance-label {
+    font-size: 0.875rem;
+    color: var(--text-secondary);
+    font-weight: 500;
+    margin: 0;
+}
+
+.finance-total {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem;
+    background: rgba(255, 255, 255, 0.5);
+    border-radius: var(--radius-md);
+}
+
+.total-label {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--text-primary);
+}
+
+.total-text {
+    font-size: 0.875rem;
+    color: var(--text-secondary);
+}
+
+.chart-section {
+    margin-bottom: 2rem;
+}
+
+.chart-legend {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin-bottom: 1.5rem;
+}
+
+.legend-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.875rem;
+    font-weight: 600;
+}
+
+.legend-color {
+    width: 20px;
+    height: 4px;
+    border-radius: 2px;
+}
+
+.legend-item.recebimentos .legend-color {
+    background: #10B981;
+}
+
+.legend-item.pagamentos .legend-color {
+    background: #EF4444;
+}
+
+.tables-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+}
+
+.table-section {
+    animation: fadeIn 0.5s ease-out;
+}
+
+.table-header {
+    padding: 1rem 1.5rem;
+    border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+    margin-bottom: -1px;
+}
+
+.table-header.green-header {
+    background: #10B981;
+}
+
+.table-header.red-header {
+    background: #EF4444;
+}
+
+.table-header h3 {
+    margin: 0;
+    color: white;
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+.table-card {
+    border-radius: 0 0 var(--radius-lg) var(--radius-lg);
+    padding: 0;
+}
+
+.table-card table {
+    margin-bottom: 1rem;
+}
+
+.empty-message {
+    text-align: center;
+    padding: 3rem;
+    color: var(--text-tertiary);
+    margin: 0;
+}
+
+.btn-block {
+    width: 100%;
+    margin-top: 1rem;
+}
+
+.btn-success {
+    background: #10B981;
+    color: white;
+}
+
+.btn-success:hover {
+    background: #059669;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .financeiro {
+        padding: 1rem;
+    }
+
+    .financeiro-header {
+        flex-direction: column;
+        gap: 1rem;
+        align-items: stretch;
+    }
+
+    .date-selector {
+        justify-content: space-between;
+    }
+
+    .finance-cards {
+        grid-template-columns: 1fr;
+    }
+
+    .tables-grid {
+        grid-template-columns: 1fr;
+    }
+}
