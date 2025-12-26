@@ -1,8 +1,10 @@
-from fastapi import APIRouter, WebSocket, WebSocketDisconnect
+from fastapi import APIRouter, WebSocket, WebSocketDisconnect, HTTPException
 from pydantic import BaseModel
 from typing import Optional
+from datetime import datetime, timedelta
 import uuid
 from app.core.supabase import supabase_admin
+from app.services.google_meet_service import google_meet_service
 
 router = APIRouter()
 
@@ -10,27 +12,63 @@ class TelemedicineSessionCreate(BaseModel):
     agendamento_id: str
     paciente_id: str
     professional_id: str
+    summary: str = "Consulta de Telemedicina"
+    start_time: datetime
+    duration_minutes: int = 60
+    patient_email: Optional[str] = None
+    professional_email: Optional[str] = None
 
 @router.post("/sessions")
 async def create_telemedicine_session(session: TelemedicineSessionCreate):
     """
-    Cria sessão de telemedicina
-    """
-    room_id = str(uuid.uuid4())
+    Cria sessão de telemedicina com Google Meet
 
+    Cria um evento no Google Calendar com link do Meet e salva no banco.
+    Envia convites para paciente e profissional.
+    """
+    # Buscar emails se não fornecidos
+    if not session.patient_email:
+        patient = supabase_admin.table("pacientes").select("email").eq("id", session.paciente_id).single().execute()
+        session.patient_email = patient.data.get("email") if patient.data else None
+
+    if not session.professional_email:
+        professional = supabase_admin.table("profiles").select("email").eq("id", session.professional_id).single().execute()
+        session.professional_email = professional.data.get("email") if professional.data else None
+
+    # Criar reunião no Google Meet
+    attendees = []
+    if session.patient_email:
+        attendees.append(session.patient_email)
+    if session.professional_email:
+        attendees.append(session.professional_email)
+
+    meet_data = google_meet_service.create_meeting(
+        summary=session.summary,
+        start_time=session.start_time,
+        duration_minutes=session.duration_minutes,
+        attendees=attendees,
+        description=f"Consulta de telemedicina - Agendamento #{session.agendamento_id}"
+    )
+
+    # Salvar no banco
     result = supabase_admin.table("telemedicine_sessions").insert({
         "agendamento_id": session.agendamento_id,
         "paciente_id": session.paciente_id,
         "professional_id": session.professional_id,
-        "room_id": room_id,
+        "meet_link": meet_data["meet_link"],
+        "google_event_id": meet_data["event_id"],
+        "start_time": meet_data["start_time"],
+        "end_time": meet_data["end_time"],
         "status": "scheduled"
     }).execute()
 
     return {
         "success": True,
         "session": result.data[0],
-        "join_url_patient": f"/telemedicine/join/{room_id}?role=patient",
-        "join_url_professional": f"/telemedicine/join/{room_id}?role=professional"
+        "meet_link": meet_data["meet_link"],
+        "start_time": meet_data["start_time"],
+        "end_time": meet_data["end_time"],
+        "message": "Link do Google Meet criado! Os participantes receberão convite por email."
     }
 
 @router.get("/sessions/{session_id}")
