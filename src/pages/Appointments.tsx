@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Calendar as BigCalendar, dateFnsLocalizer, View } from 'react-big-calendar';
 import { format, parse, startOfWeek, getDay, addHours } from 'date-fns';
-import ptBR from 'date-fns/locale/pt-BR';
+import { ptBR } from 'date-fns/locale/pt-BR';
 import 'react-big-calendar/lib/css/react-big-calendar.css';
 import { supabase } from '../lib/supabase';
 import { Plus, X, Calendar, Clock, User, Sparkles, Video, MapPin } from 'lucide-react';
