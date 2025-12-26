@@ -18,11 +18,17 @@ import {
     ClipboardList,
     Zap,
     Shield,
-    TrendingUp
+    TrendingUp,
+    X
 } from 'lucide-react';
 import { supabase } from '../lib/supabase';
 
-const Sidebar = () => {
+interface SidebarProps {
+    isOpen: boolean;
+    onClose: () => void;
+}
+
+const Sidebar = ({ isOpen, onClose }: SidebarProps) => {
     const location = useLocation();
 
     const menuSections = [
@@ -82,24 +88,67 @@ const Sidebar = () => {
     };
 
     return (
-        <aside style={{
-            width: 'var(--sidebar-w)',
-            borderRight: '1px solid var(--border)',
-            background: 'var(--bg-card)',
-            display: 'flex',
-            flexDirection: 'column',
-            padding: '1.5rem 0.75rem',
-            overflowY: 'auto',
-            height: '100vh',
-            position: 'sticky',
-            top: 0
-        }}>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '2rem', paddingLeft: '0.75rem' }}>
-                <div style={{ padding: '8px', background: 'var(--primary)', borderRadius: '10px' }}>
-                    <Sparkles size={20} color="white" />
+        <>
+            {/* Overlay mobile */}
+            {isOpen && (
+                <div
+                    onClick={onClose}
+                    style={{
+                        position: 'fixed',
+                        top: 0,
+                        left: 0,
+                        right: 0,
+                        bottom: 0,
+                        background: 'rgba(0, 0, 0, 0.5)',
+                        zIndex: 998,
+                        display: window.innerWidth > 768 ? 'none' : 'block'
+                    }}
+                />
+            )}
+
+            <aside style={{
+                width: 'var(--sidebar-w)',
+                borderRight: '1px solid var(--border)',
+                background: 'var(--bg-card)',
+                display: 'flex',
+                flexDirection: 'column',
+                padding: '1.5rem 0.75rem',
+                overflowY: 'auto',
+                height: '100vh',
+                position: window.innerWidth > 768 ? 'sticky' : 'fixed',
+                top: 0,
+                left: isOpen || window.innerWidth > 768 ? 0 : '-260px',
+                zIndex: 999,
+                transition: 'left 0.3s ease',
+                ...(window.innerWidth <= 768 && { width: '260px' })
+            }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '2rem', paddingLeft: '0.75rem', justifyContent: 'space-between' }}>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
+                        <div style={{ padding: '8px', background: 'var(--primary)', borderRadius: '10px' }}>
+                            <Sparkles size={20} color="white" />
+                        </div>
+                        <h1 style={{ fontSize: '1.125rem', fontWeight: 700 }}>Clínica Pro</h1>
+                    </div>
+                    {window.innerWidth <= 768 && (
+                        <button
+                            onClick={onClose}
+                            style={{
+                                display: 'flex',
+                                alignItems: 'center',
+                                justifyContent: 'center',
+                                width: '32px',
+                                height: '32px',
+                                borderRadius: '8px',
+                                background: 'var(--bg-main)',
+                                border: 'none',
+                                cursor: 'pointer',
+                                color: 'var(--text-main)'
+                            }}
+                        >
+                            <X size={20} />
+                        </button>
+                    )}
                 </div>
-                <h1 style={{ fontSize: '1.125rem', fontWeight: 700 }}>Clínica Pro</h1>
-            </div>
 
             <nav style={{ flex: 1, display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
                 {menuSections.map((section, idx) => (
@@ -122,6 +171,7 @@ const Sidebar = () => {
                                     <Link
                                         key={item.path}
                                         to={item.path}
+                                        onClick={() => window.innerWidth <= 768 && onClose()}
                                         style={{
                                             display: 'flex',
                                             alignItems: 'center',
@@ -177,6 +227,7 @@ const Sidebar = () => {
                 </button>
             </div>
         </aside>
+        </>
     );
 };
 

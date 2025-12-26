@@ -1,11 +1,12 @@
-import { Bell, Moon, Sun, Search } from 'lucide-react';
+import { Bell, Moon, Sun, Search, Menu } from 'lucide-react';
 
 interface HeaderProps {
     theme: string;
     toggleTheme: () => void;
+    onMenuClick: () => void;
 }
 
-const Header = ({ theme, toggleTheme }: HeaderProps) => {
+const Header = ({ theme, toggleTheme, onMenuClick }: HeaderProps) => {
     return (
         <header style={{
             height: '70px',
@@ -14,9 +15,29 @@ const Header = ({ theme, toggleTheme }: HeaderProps) => {
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'space-between',
-            padding: '0 2rem',
+            padding: '0 1rem',
+            gap: '1rem'
         }}>
-            <div style={{ position: 'relative', width: '300px' }}>
+            {/* Botão Menu Mobile */}
+            <button
+                onClick={onMenuClick}
+                style={{
+                    width: '40px',
+                    height: '40px',
+                    borderRadius: '10px',
+                    display: window.innerWidth > 768 ? 'none' : 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    background: 'var(--bg-main)',
+                    border: '1px solid var(--border)',
+                    color: 'var(--text-main)',
+                    cursor: 'pointer'
+                }}
+            >
+                <Menu size={20} />
+            </button>
+
+            <div style={{ position: 'relative', flex: 1, maxWidth: '400px', display: window.innerWidth < 640 ? 'none' : 'block' }}>
                 <Search size={18} style={{ position: 'absolute', left: '12px', top: '50%', transform: 'translateY(-50%)', color: 'var(--text-muted)' }} />
                 <input
                     type="text"

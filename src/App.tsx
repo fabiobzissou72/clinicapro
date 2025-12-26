@@ -35,6 +35,7 @@ function App() {
     const [session, setSession] = useState<any>(null);
     const [loading, setLoading] = useState(true);
     const [theme, setTheme] = useState('light');
+    const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
     useEffect(() => {
         const demoSession = window.localStorage.getItem('sb-demo-session');
@@ -99,10 +100,14 @@ function App() {
 
     return (
         <div style={{ display: 'flex', minHeight: '100vh', background: 'var(--bg-main)' }}>
-            <Sidebar />
-            <div style={{ flex: 1, display: 'flex', flexDirection: 'column' }}>
-                <Header theme={theme} toggleTheme={toggleTheme} />
-                <main style={{ padding: '2rem', flex: 1, overflowY: 'auto' }}>
+            <Sidebar isOpen={isMobileMenuOpen} onClose={() => setIsMobileMenuOpen(false)} />
+            <div style={{ flex: 1, display: 'flex', flexDirection: 'column', minWidth: 0 }}>
+                <Header
+                    theme={theme}
+                    toggleTheme={toggleTheme}
+                    onMenuClick={() => setIsMobileMenuOpen(true)}
+                />
+                <main style={{ padding: '1rem', flex: 1, overflowY: 'auto' }}>
                     <Routes>
                         {/* Principal */}
                         <Route path="/" element={<Dashboard />} />

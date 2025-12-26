@@ -52,13 +52,13 @@ const Dashboard = () => {
     ];
 
     return (
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
             <div>
-                <h2 style={{ fontSize: '1.875rem', fontWeight: 700, marginBottom: '0.25rem' }}>Dashboard Principal</h2>
-                <p style={{ color: 'var(--text-muted)' }}>Bem-vindo de volta! Aqui está o resumo da sua clínica.</p>
+                <h2 style={{ fontSize: 'clamp(1.5rem, 4vw, 1.875rem)', fontWeight: 700, marginBottom: '0.25rem' }}>Dashboard Principal</h2>
+                <p style={{ color: 'var(--text-muted)', fontSize: 'clamp(0.875rem, 2vw, 1rem)' }}>Bem-vindo de volta! Aqui está o resumo da sua clínica.</p>
             </div>
 
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: '1.5rem' }}>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 240px), 1fr))', gap: '1rem' }}>
                 {stats.map((stat, i) => (
                     <div key={i} className="card" style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
                         <div style={{
@@ -86,9 +86,9 @@ const Dashboard = () => {
                 ))}
             </div>
 
-            <div style={{ display: 'grid', gridTemplateColumns: '1.5fr 1fr', gap: '1.5rem' }}>
-                <div className="card" style={{ height: '400px' }}>
-                    <h4 style={{ marginBottom: '1.5rem', fontWeight: 600 }}>Evolução do Faturamento (Jan-Jun)</h4>
+            <div style={{ display: 'grid', gridTemplateColumns: window.innerWidth > 1024 ? '1.5fr 1fr' : '1fr', gap: '1rem' }}>
+                <div className="card" style={{ height: '400px', padding: '1rem' }}>
+                    <h4 style={{ marginBottom: '1rem', fontWeight: 600, fontSize: 'clamp(0.875rem, 2vw, 1rem)' }}>Evolução do Faturamento (Jan-Jun)</h4>
                     <ResponsiveContainer width="100%" height="90%">
                         <LineChart data={revenueData}>
                             <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="var(--border)" />
@@ -103,12 +103,12 @@ const Dashboard = () => {
                     </ResponsiveContainer>
                 </div>
 
-                <div className="card" style={{ height: '400px' }}>
-                    <h4 style={{ marginBottom: '1.5rem', fontWeight: 600 }}>Procedimentos Mais Populares</h4>
+                <div className="card" style={{ height: '400px', padding: '1rem' }}>
+                    <h4 style={{ marginBottom: '1rem', fontWeight: 600, fontSize: 'clamp(0.875rem, 2vw, 1rem)' }}>Procedimentos Mais Populares</h4>
                     <ResponsiveContainer width="100%" height="90%">
                         <BarChart data={procedureData} layout="vertical">
                             <XAxis type="number" hide />
-                            <YAxis dataKey="name" type="category" width={100} fontSize={12} stroke="var(--text-muted)" tickLine={false} axisLine={false} />
+                            <YAxis dataKey="name" type="category" width={window.innerWidth < 640 ? 80 : 100} fontSize={window.innerWidth < 640 ? 10 : 12} stroke="var(--text-muted)" tickLine={false} axisLine={false} />
                             <Tooltip cursor={{ fill: 'transparent' }} />
                             <Bar dataKey="value" radius={[0, 4, 4, 0]}>
                                 {procedureData.map((entry, index) => (
@@ -120,9 +120,9 @@ const Dashboard = () => {
                 </div>
             </div>
 
-            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1.5fr', gap: '1.5rem' }}>
-                <div className="card" style={{ height: '400px' }}>
-                    <h4 style={{ marginBottom: '1.5rem', fontWeight: 600 }}>Status Financeiro</h4>
+            <div style={{ display: 'grid', gridTemplateColumns: window.innerWidth > 1024 ? '1fr 1.5fr' : '1fr', gap: '1rem' }}>
+                <div className="card" style={{ height: '400px', padding: '1rem' }}>
+                    <h4 style={{ marginBottom: '1rem', fontWeight: 600, fontSize: 'clamp(0.875rem, 2vw, 1rem)' }}>Status Financeiro</h4>
                     <ResponsiveContainer width="100%" height="70%">
                         <PieChart>
                             <Pie
@@ -152,9 +152,9 @@ const Dashboard = () => {
                     </div>
                 </div>
 
-                <div className="card" style={{ height: '400px', display: 'flex', flexDirection: 'column' }}>
-                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1.5rem' }}>
-                        <h4 style={{ fontWeight: 600 }}>Próximos Agendamentos</h4>
+                <div className="card" style={{ height: '400px', display: 'flex', flexDirection: 'column', padding: '1rem' }}>
+                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1rem', flexWrap: 'wrap', gap: '0.5rem' }}>
+                        <h4 style={{ fontWeight: 600, fontSize: 'clamp(0.875rem, 2vw, 1rem)' }}>Próximos Agendamentos</h4>
                         <button style={{ color: 'var(--primary)', fontSize: '0.875rem', fontWeight: 600 }}>Ver todos</button>
                     </div>
                     <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem', overflowY: 'auto' }}>

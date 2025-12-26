@@ -142,11 +142,11 @@ const Patients = () => {
     };
 
     return (
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}>
-            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '1rem' }}>
                 <div>
-                    <h2 style={{ fontSize: '1.875rem', fontWeight: 700, marginBottom: '0.25rem' }}>Pacientes</h2>
-                    <p style={{ color: 'var(--text-muted)' }}>Gerencie o cadastro e histórico dos seus pacientes.</p>
+                    <h2 style={{ fontSize: 'clamp(1.5rem, 4vw, 1.875rem)', fontWeight: 700, marginBottom: '0.25rem' }}>Pacientes</h2>
+                    <p style={{ color: 'var(--text-muted)', fontSize: 'clamp(0.875rem, 2vw, 1rem)' }}>Gerencie o cadastro e histórico dos seus pacientes.</p>
                 </div>
                 <button
                     onClick={() => openModal()}
@@ -160,20 +160,21 @@ const Patients = () => {
                         gap: '0.5rem',
                         fontWeight: 600,
                         border: 'none',
-                        cursor: 'pointer'
+                        cursor: 'pointer',
+                        fontSize: '0.875rem'
                     }}>
-                    <Plus size={20} />
-                    Novo Paciente
+                    <Plus size={18} />
+                    {window.innerWidth > 640 ? 'Novo Paciente' : 'Novo'}
                 </button>
             </div>
 
             <div className="card" style={{ padding: '0' }}>
-                <div style={{ padding: '1.5rem', borderBottom: '1px solid var(--border)', display: 'flex', gap: '1rem' }}>
+                <div style={{ padding: '1rem', borderBottom: '1px solid var(--border)', display: 'flex', gap: '1rem' }}>
                     <div style={{ position: 'relative', flex: 1 }}>
                         <Search size={18} style={{ position: 'absolute', left: '12px', top: '50%', transform: 'translateY(-50%)', color: 'var(--text-muted)' }} />
                         <input
                             type="text"
-                            placeholder="Buscar paciente por nome, CPF, telefone ou email..."
+                            placeholder={window.innerWidth > 640 ? "Buscar paciente por nome, CPF, telefone ou email..." : "Buscar paciente..."}
                             value={searchTerm}
                             onChange={(e) => setSearchTerm(e.target.value)}
                             style={{
@@ -183,7 +184,8 @@ const Patients = () => {
                                 border: '1px solid var(--border)',
                                 borderRadius: '10px',
                                 color: 'var(--text-main)',
-                                outline: 'none'
+                                outline: 'none',
+                                fontSize: '0.875rem'
                             }}
                         />
                     </div>
@@ -197,28 +199,28 @@ const Patients = () => {
                     <div style={{ padding: '4rem', textAlign: 'center', color: 'var(--text-muted)' }}>
                         {searchTerm ? 'Nenhum paciente encontrado com esse critério.' : 'Nenhum paciente cadastrado. Clique em "Novo Paciente" para começar.'}
                     </div>
-                ) : (
+                ) : window.innerWidth > 768 ? (
                     <div style={{ overflowX: 'auto' }}>
                         <table style={{ width: '100%', borderCollapse: 'collapse', textAlign: 'left' }}>
                             <thead>
                                 <tr style={{ background: 'var(--bg-main)', borderBottom: '1px solid var(--border)' }}>
-                                    <th style={{ padding: '1rem 1.5rem', color: 'var(--text-muted)', fontWeight: 600, fontSize: '0.875rem' }}>NOME COMPLETO</th>
-                                    <th style={{ padding: '1rem 1.5rem', color: 'var(--text-muted)', fontWeight: 600, fontSize: '0.875rem' }}>CPF</th>
-                                    <th style={{ padding: '1rem 1.5rem', color: 'var(--text-muted)', fontWeight: 600, fontSize: '0.875rem' }}>CONTATO</th>
-                                    <th style={{ padding: '1rem 1.5rem', color: 'var(--text-muted)', fontWeight: 600, fontSize: '0.875rem' }}>EMAIL</th>
-                                    <th style={{ padding: '1rem 1.5rem', color: 'var(--text-muted)', fontWeight: 600, fontSize: '0.875rem' }}>AÇÕES</th>
+                                    <th style={{ padding: '1rem', color: 'var(--text-muted)', fontWeight: 600, fontSize: '0.75rem' }}>NOME COMPLETO</th>
+                                    <th style={{ padding: '1rem', color: 'var(--text-muted)', fontWeight: 600, fontSize: '0.75rem' }}>CPF</th>
+                                    <th style={{ padding: '1rem', color: 'var(--text-muted)', fontWeight: 600, fontSize: '0.75rem' }}>CONTATO</th>
+                                    <th style={{ padding: '1rem', color: 'var(--text-muted)', fontWeight: 600, fontSize: '0.75rem' }}>EMAIL</th>
+                                    <th style={{ padding: '1rem', color: 'var(--text-muted)', fontWeight: 600, fontSize: '0.75rem' }}>AÇÕES</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 {filteredPatients.map((p: any) => (
                                     <tr key={p.id} style={{ borderBottom: '1px solid var(--border)' }}>
-                                        <td style={{ padding: '1rem 1.5rem' }}>
-                                            <div style={{ fontWeight: 600 }}>{p.full_name}</div>
+                                        <td style={{ padding: '1rem' }}>
+                                            <div style={{ fontWeight: 600, fontSize: '0.875rem' }}>{p.full_name}</div>
                                         </td>
-                                        <td style={{ padding: '1rem 1.5rem' }}>{p.cpf || 'N/A'}</td>
-                                        <td style={{ padding: '1rem 1.5rem' }}>{p.phone}</td>
-                                        <td style={{ padding: '1rem 1.5rem' }}>{p.email || 'N/A'}</td>
-                                        <td style={{ padding: '1rem 1.5rem' }}>
+                                        <td style={{ padding: '1rem', fontSize: '0.875rem' }}>{p.cpf || 'N/A'}</td>
+                                        <td style={{ padding: '1rem', fontSize: '0.875rem' }}>{p.phone}</td>
+                                        <td style={{ padding: '1rem', fontSize: '0.875rem' }}>{p.email || 'N/A'}</td>
+                                        <td style={{ padding: '1rem' }}>
                                             <div style={{ display: 'flex', gap: '0.5rem' }}>
                                                 <button
                                                     onClick={() => openModal(p)}
@@ -236,6 +238,54 @@ const Patients = () => {
                                 ))}
                             </tbody>
                         </table>
+                    </div>
+                ) : (
+                    <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem', padding: '0.5rem' }}>
+                        {filteredPatients.map((p: any) => (
+                            <div key={p.id} style={{
+                                background: 'var(--bg-card)',
+                                border: '1px solid var(--border)',
+                                borderRadius: '10px',
+                                padding: '1rem',
+                                display: 'flex',
+                                flexDirection: 'column',
+                                gap: '0.75rem'
+                            }}>
+                                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'start' }}>
+                                    <div style={{ fontWeight: 700, fontSize: '1rem', flex: 1 }}>{p.full_name}</div>
+                                    <div style={{ display: 'flex', gap: '0.5rem' }}>
+                                        <button
+                                            onClick={() => openModal(p)}
+                                            style={{ color: 'var(--primary)', background: 'none', border: 'none', cursor: 'pointer', padding: '0.25rem' }}>
+                                            <Edit size={20} />
+                                        </button>
+                                        <button
+                                            onClick={() => handleDelete(p.id)}
+                                            style={{ color: '#ef4444', background: 'none', border: 'none', cursor: 'pointer', padding: '0.25rem' }}>
+                                            <Trash2 size={20} />
+                                        </button>
+                                    </div>
+                                </div>
+                                <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem', fontSize: '0.875rem' }}>
+                                    <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                                        <Phone size={14} color="var(--text-muted)" />
+                                        <span>{p.phone}</span>
+                                    </div>
+                                    {p.email && (
+                                        <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                                            <Mail size={14} color="var(--text-muted)" />
+                                            <span>{p.email}</span>
+                                        </div>
+                                    )}
+                                    {p.cpf && (
+                                        <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                                            <FileText size={14} color="var(--text-muted)" />
+                                            <span>{p.cpf}</span>
+                                        </div>
+                                    )}
+                                </div>
+                            </div>
+                        ))}
                     </div>
                 )}
             </div>

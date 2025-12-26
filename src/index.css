@@ -12,6 +12,13 @@
   --font-sans: 'Outfit', sans-serif;
 }
 
+/* Mobile: Sidebar escondida por padrão */
+@media (max-width: 768px) {
+  :root {
+    --sidebar-w: 0px;
+  }
+}
+
 [data-theme='dark'] {
   --primary: #818cf8;
   --primary-hover: #6366f1;

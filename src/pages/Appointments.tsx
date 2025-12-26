@@ -241,10 +241,10 @@ const Appointments = () => {
 
     return (
         <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
-            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '1rem' }}>
                 <div>
-                    <h2 style={{ fontSize: '1.875rem', fontWeight: 700 }}>Agenda</h2>
-                    <p style={{ color: 'var(--text-muted)' }}>Visualização: Dia | Semana | Mês</p>
+                    <h2 style={{ fontSize: 'clamp(1.5rem, 4vw, 1.875rem)', fontWeight: 700 }}>Agenda</h2>
+                    <p style={{ color: 'var(--text-muted)', fontSize: 'clamp(0.875rem, 2vw, 1rem)' }}>Visualização: Dia | Semana | Mês</p>
                 </div>
                 <button
                     onClick={() => {
@@ -265,18 +265,19 @@ const Appointments = () => {
                     style={{
                         background: 'var(--primary)',
                         color: 'white',
-                        padding: '0.75rem 1.5rem',
+                        padding: '0.75rem 1.25rem',
                         borderRadius: '10px',
                         border: 'none',
                         cursor: 'pointer',
                         fontWeight: 600,
                         display: 'flex',
                         alignItems: 'center',
-                        gap: '0.5rem'
+                        gap: '0.5rem',
+                        fontSize: '0.875rem'
                     }}
                 >
-                    <Plus size={20} />
-                    Novo Agendamento
+                    <Plus size={18} />
+                    {window.innerWidth > 640 ? 'Novo Agendamento' : 'Novo'}
                 </button>
             </div>
 
@@ -297,7 +298,7 @@ const Appointments = () => {
                 </div>
             </div>
 
-            <div className="card" style={{ padding: '1.5rem', height: '700px' }}>
+            <div className="card" style={{ padding: window.innerWidth > 640 ? '1.5rem' : '0.75rem', height: window.innerWidth > 640 ? '700px' : '600px' }}>
                 <BigCalendar
                     localizer={localizer}
                     events={events}
@@ -316,6 +317,7 @@ const Appointments = () => {
                     min={new Date(2024, 0, 1, 7, 0)}
                     max={new Date(2024, 0, 1, 22, 0)}
                     culture="pt-BR"
+                    toolbar={window.innerWidth > 640}
                     formats={{
                         monthHeaderFormat: (date: Date) => format(date, 'MMMM yyyy', { locale: ptBR }),
                         dayHeaderFormat: (date: Date) => format(date, 'cccc, dd MMM', { locale: ptBR }),
