@@ -19,7 +19,9 @@ import {
     Zap,
     Shield,
     TrendingUp,
-    X
+    X,
+    Book,
+    ExternalLink
 } from 'lucide-react';
 import { supabase } from '../lib/supabase';
 
@@ -77,7 +79,8 @@ const Sidebar = ({ isOpen, onClose }: SidebarProps) => {
             items: [
                 { name: 'Integrações', icon: Zap, path: '/integracoes' },
                 { name: 'Segurança', icon: Shield, path: '/seguranca' },
-                { name: 'Configurações', icon: Settings, path: '/configuracoes' }
+                { name: 'Configurações', icon: Settings, path: '/configuracoes' },
+                { name: 'Documentação API', icon: Book, path: '/api-docs', external: true }
             ]
         }
     ];
@@ -165,25 +168,50 @@ const Sidebar = ({ isOpen, onClose }: SidebarProps) => {
                             {section.title}
                         </h3>
                         <div style={{ display: 'flex', flexDirection: 'column', gap: '0.25rem' }}>
-                            {section.items.map((item) => {
+                            {section.items.map((item: any) => {
                                 const isActive = location.pathname === item.path;
+                                const linkStyle = {
+                                    display: 'flex',
+                                    alignItems: 'center',
+                                    gap: '0.75rem',
+                                    padding: '0.625rem 0.75rem',
+                                    borderRadius: '8px',
+                                    color: isActive ? 'var(--primary)' : 'var(--text-muted)',
+                                    background: isActive ? 'rgba(99, 102, 241, 0.1)' : 'transparent',
+                                    transition: 'all 0.2s ease',
+                                    fontWeight: isActive ? 600 : 400,
+                                    fontSize: '0.875rem',
+                                    textDecoration: 'none'
+                                };
+
+                                if (item.external) {
+                                    // Link externo para documentação API
+                                    const apiUrl = window.location.hostname === 'localhost'
+                                        ? 'http://localhost:8000/docs'
+                                        : 'https://clinicapro-iota.vercel.app/api/docs';
+
+                                    return (
+                                        <a
+                                            key={item.path}
+                                            href={apiUrl}
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            onClick={() => window.innerWidth <= 768 && onClose()}
+                                            style={linkStyle}
+                                        >
+                                            <item.icon size={18} />
+                                            {item.name}
+                                            <ExternalLink size={14} style={{ marginLeft: 'auto' }} />
+                                        </a>
+                                    );
+                                }
+
                                 return (
                                     <Link
                                         key={item.path}
                                         to={item.path}
                                         onClick={() => window.innerWidth <= 768 && onClose()}
-                                        style={{
-                                            display: 'flex',
-                                            alignItems: 'center',
-                                            gap: '0.75rem',
-                                            padding: '0.625rem 0.75rem',
-                                            borderRadius: '8px',
-                                            color: isActive ? 'var(--primary)' : 'var(--text-muted)',
-                                            background: isActive ? 'rgba(99, 102, 241, 0.1)' : 'transparent',
-                                            transition: 'all 0.2s ease',
-                                            fontWeight: isActive ? 600 : 400,
-                                            fontSize: '0.875rem'
-                                        }}
+                                        style={linkStyle}
                                     >
                                         <item.icon size={18} />
                                         {item.name}
