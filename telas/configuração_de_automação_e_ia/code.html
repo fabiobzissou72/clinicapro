@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+
+<html class="light" lang="pt-BR"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Configuração de Automação e IA</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script>
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "primary": "#2b8cee",
+            "background-light": "#f6f7f8",
+            "background-dark": "#101922",
+          },
+          fontFamily: {
+            "display": ["Inter", "sans-serif"]
+          },
+          borderRadius: {
+            "DEFAULT": "0.5rem",
+            "lg": "1rem",
+            "xl": "1.5rem",
+            "full": "9999px"
+          },
+        },
+      },
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      font-size: 24px;
+    }
+  </style>
+</head>
+<body class="font-display bg-background-light dark:bg-background-dark">
+<div class="relative flex h-auto min-h-screen w-full flex-col group/design-root overflow-x-hidden">
+<div class="layout-container flex h-full grow flex-col">
+<header class="flex items-center justify-between whitespace-nowrap border-b border-solid border-b-gray-200 dark:border-b-gray-800 px-6 sm:px-10 lg:px-20 py-3 bg-white dark:bg-background-dark">
+<div class="flex items-center gap-4 text-gray-900 dark:text-white">
+<div class="size-6 text-primary">
+<svg fill="none" viewbox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+<path d="M4 4H17.3334V17.3334H30.6666V30.6666H44V44H4V4Z" fill="currentColor"></path>
+</svg>
+</div>
+<h2 class="text-lg font-bold leading-tight tracking-[-0.015em]">Clínica Estética</h2>
+</div>
+<div class="hidden md:flex flex-1 justify-center gap-8">
+<div class="flex items-center gap-9">
+<a class="text-sm font-medium leading-normal text-gray-800 dark:text-gray-300 hover:text-primary dark:hover:text-primary" href="#">Dashboard</a>
+<a class="text-sm font-medium leading-normal text-gray-800 dark:text-gray-300 hover:text-primary dark:hover:text-primary" href="#">Agenda</a>
+<a class="text-sm font-medium leading-normal text-gray-800 dark:text-gray-300 hover:text-primary dark:hover:text-primary" href="#">Pacientes</a>
+<a class="text-sm font-medium leading-normal text-gray-800 dark:text-gray-300 hover:text-primary dark:hover:text-primary" href="#">Financeiro</a>
+<a class="text-sm font-medium leading-normal text-primary dark:text-primary" href="#">Configurações</a>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<button class="hidden sm:flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-primary text-white text-sm font-bold leading-normal tracking-[0.015em]">
+<span class="truncate">Nova Consulta</span>
+</button>
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10" data-alt="Profile picture of a user" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAq1tHy0GUbqoNwKO5rFPvVIh2HXvlFpYId-GYSLNkoEHHXn33CRH_pg5jow-uNzksGb-swgzLFtzJBnePl06c3NtOgyrbT8s25gUa8YEImkG8mGhDIF-muOJ_J6bFjoj3n2FmFQay7Om_9AlI6-jrlgqDUDIsp0DTFtl3Zt1DfXaY2kqdOr0UyOif2st55HfRscteeeubeyYn1wUD9fNQ1X-lPdic0HfufiK8C_tHzDFtDEUAfHPgiEz8y_3hD_xZhJLk1ystodw");'></div>
+</div>
+</header>
+<main class="flex-1 px-4 sm:px-6 lg:px-8 py-8">
+<div class="mx-auto max-w-5xl">
+<div class="flex flex-wrap justify-between gap-3 p-4 mb-6">
+<div class="flex min-w-72 flex-col gap-2">
+<p class="text-gray-900 dark:text-white text-4xl font-black leading-tight tracking-[-0.033em]">Configuração de Automação e IA</p>
+<p class="text-gray-500 dark:text-gray-400 text-base font-normal leading-normal">Gerencie os avisos automáticos e as sequências de feedback.</p>
+</div>
+</div>
+<section>
+<h2 class="text-gray-900 dark:text-white text-[22px] font-bold leading-tight tracking-[-0.015em] px-4 pb-3 pt-5">Lembretes de Consulta</h2>
+<div class="rounded-xl shadow-[0_0_12px_rgba(0,0,0,0.05)] bg-white dark:bg-background-dark/50 border border-gray-200 dark:border-gray-800">
+<div class="flex items-center gap-4 bg-white dark:bg-transparent px-4 min-h-[72px] py-2 justify-between border-b border-gray-200 dark:border-gray-800 rounded-t-xl">
+<div class="flex items-center gap-4">
+<div class="text-primary flex items-center justify-center rounded-lg bg-primary/10 shrink-0 size-12">
+<span class="material-symbols-outlined">notifications_active</span>
+</div>
+<div class="flex flex-col justify-center">
+<p class="text-gray-900 dark:text-white text-base font-medium leading-normal line-clamp-1">Aviso de Consulta Próxima</p>
+<p class="text-gray-500 dark:text-gray-400 text-sm font-normal leading-normal line-clamp-2">Envie um lembrete automático para os clientes antes do horário agendado.</p>
+</div>
+</div>
+<div class="shrink-0">
+<label class="relative flex h-[31px] w-[51px] cursor-pointer items-center rounded-full border-none bg-gray-200 dark:bg-gray-700 p-0.5 has-[:checked]:justify-end has-[:checked]:bg-primary">
+<div class="h-full w-[27px] rounded-full bg-white transition-transform" style="box-shadow: rgba(0, 0, 0, 0.15) 0px 3px 8px, rgba(0, 0, 0, 0.06) 0px 3px 1px;"></div>
+<input checked="" class="invisible absolute" type="checkbox"/>
+</label>
+</div>
+</div>
+<div class="p-6 space-y-6">
+<div>
+<label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2" for="trigger-time">Gatilho de Envio</label>
+<div class="flex items-center gap-2">
+<span class="text-sm text-gray-600 dark:text-gray-400">Enviar</span>
+<input class="w-20 rounded-md border-gray-300 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-200 shadow-sm focus:border-primary focus:ring-primary sm:text-sm" id="trigger-time" type="number" value="24"/>
+<span class="text-sm text-gray-600 dark:text-gray-400">horas antes da consulta.</span>
+</div>
+</div>
+<div>
+<label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2" for="message-template-1">Template da Mensagem</label>
+<textarea class="block w-full rounded-md border-gray-300 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-200 shadow-sm focus:border-primary focus:ring-primary sm:text-sm" id="message-template-1" placeholder="Ex: Olá {nome_cliente}, seu horário para {nome_procedimento} está confirmado para {data_consulta}." rows="4">Olá {nome_cliente}, passando para lembrar da sua consulta de {nome_procedimento} amanhã, dia {data_consulta} às {hora_consulta}. Mal podemos esperar para te ver!</textarea>
+<p class="mt-2 text-xs text-gray-500 dark:text-gray-400">Variáveis disponíveis: <code class="bg-gray-100 dark:bg-gray-700 rounded p-1 text-xs">{nome_cliente}</code>, <code class="bg-gray-100 dark:bg-gray-700 rounded p-1 text-xs">{nome_procedimento}</code>, <code class="bg-gray-100 dark:bg-gray-700 rounded p-1 text-xs">{data_consulta}</code>, <code class="bg-gray-100 dark:bg-gray-700 rounded p-1 text-xs">{hora_consulta}</code></p>
+</div>
+<div>
+<label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2" for="webhook-url-1">URL do Webhook</label>
+<input class="block w-full rounded-md border-gray-300 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-200 shadow-sm focus:border-primary focus:ring-primary sm:text-sm" id="webhook-url-1" placeholder="https://api.seusistema.com/webhook/lembrete" type="url"/>
+</div>
+<div class="flex justify-end gap-3">
+<button class="flex min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200 text-sm font-bold leading-normal">
+<span class="truncate">Testar Webhook</span>
+</button>
+<button class="flex min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-primary text-white text-sm font-bold leading-normal">
+<span class="truncate">Salvar</span>
+</button>
+</div>
+</div>
+</div>
+</section>
+<section>
+<h2 class="text-gray-900 dark:text-white text-[22px] font-bold leading-tight tracking-[-0.015em] px-4 pb-3 pt-10">Sequência de Feedback Pós-Atendimento</h2>
+<div class="space-y-6">
+<div class="rounded-xl shadow-[0_0_12px_rgba(0,0,0,0.05)] bg-white dark:bg-background-dark/50 border border-gray-200 dark:border-gray-800">
+<div class="flex items-center gap-4 bg-white dark:bg-transparent px-4 min-h-[72px] py-2 justify-between border-b border-gray-200 dark:border-gray-800 rounded-t-xl">
+<div class="flex items-center gap-4">
+<div class="text-primary flex items-center justify-center rounded-lg bg-primary/10 shrink-0 size-12">
+<span class="material-symbols-outlined">reviews</span>
+</div>
+<div class="flex flex-col justify-center">
+<p class="text-gray-900 dark:text-white text-base font-medium leading-normal line-clamp-1">Feedback 24 horas após</p>
+<p class="text-gray-500 dark:text-gray-400 text-sm font-normal leading-normal line-clamp-2">Solicite uma avaliação inicial do atendimento.</p>
+</div>
+</div>
+<div class="shrink-0">
+<label class="relative flex h-[31px] w-[51px] cursor-pointer items-center rounded-full border-none bg-gray-200 dark:bg-gray-700 p-0.5 has-[:checked]:justify-end has-[:checked]:bg-primary">
+<div class="h-full w-[27px] rounded-full bg-white transition-transform" style="box-shadow: rgba(0, 0, 0, 0.15) 0px 3px 8px, rgba(0, 0, 0, 0.06) 0px 3px 1px;"></div>
+<input checked="" class="invisible absolute" type="checkbox"/>
+</label>
+</div>
+</div>
+<div class="p-6 space-y-6">
+<div>
+<label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2" for="message-template-2">Template da Mensagem</label>
+<textarea class="block w-full rounded-md border-gray-300 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-200 shadow-sm focus:border-primary focus:ring-primary sm:text-sm" id="message-template-2" placeholder="Ex: Olá {nome_cliente}, gostaríamos de saber como foi sua experiência conosco." rows="3">Olá {nome_cliente}, como você está se sentindo após o seu procedimento? Sua opinião é muito importante para nós! Deixe seu feedback em: {link_feedback}</textarea>
+<p class="mt-2 text-xs text-gray-500 dark:text-gray-400">Variável adicional: <code class="bg-gray-100 dark:bg-gray-700 rounded p-1 text-xs">{link_feedback}</code></p>
+</div>
+<div>
+<label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2" for="webhook-url-2">URL do Webhook</label>
+<input class="block w-full rounded-md border-gray-300 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-200 shadow-sm focus:border-primary focus:ring-primary sm:text-sm" id="webhook-url-2" placeholder="https://api.seusistema.com/webhook/feedback24h" type="url"/>
+</div>
+<div class="flex justify-end gap-3">
+<button class="flex min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200 text-sm font-bold leading-normal">
+<span class="truncate">Testar Webhook</span>
+</button>
+<button class="flex min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-primary text-white text-sm font-bold leading-normal">
+<span class="truncate">Salvar</span>
+</button>
+</div>
+</div>
+</div>
+<div class="rounded-xl shadow-[0_0_12px_rgba(0,0,0,0.05)] bg-white dark:bg-background-dark/50 border border-gray-200 dark:border-gray-800">
+<div class="flex items-center gap-4 bg-white dark:bg-transparent px-4 min-h-[72px] py-2 justify-between rounded-xl">
+<div class="flex items-center gap-4">
+<div class="text-primary flex items-center justify-center rounded-lg bg-primary/10 shrink-0 size-12">
+<span class="material-symbols-outlined">thumb_up</span>
+</div>
+<div class="flex flex-col justify-center">
+<p class="text-gray-900 dark:text-white text-base font-medium leading-normal line-clamp-1">Feedback 15 dias após</p>
+<p class="text-gray-500 dark:text-gray-400 text-sm font-normal leading-normal line-clamp-2">Verifique a satisfação do cliente com os resultados iniciais.</p>
+</div>
+</div>
+<div class="shrink-0">
+<label class="relative flex h-[31px] w-[51px] cursor-pointer items-center rounded-full border-none bg-gray-200 dark:bg-gray-700 p-0.5 has-[:checked]:justify-end has-[:checked]:bg-primary">
+<div class="h-full w-[27px] rounded-full bg-white transition-transform" style="box-shadow: rgba(0, 0, 0, 0.15) 0px 3px 8px, rgba(0, 0, 0, 0.06) 0px 3px 1px;"></div>
+<input class="invisible absolute" type="checkbox"/>
+</label>
+</div>
+</div>
+</div>
+<div class="rounded-xl shadow-[0_0_12px_rgba(0,0,0,0.05)] bg-white dark:bg-background-dark/50 border border-gray-200 dark:border-gray-800">
+<div class="flex items-center gap-4 bg-white dark:bg-transparent px-4 min-h-[72px] py-2 justify-between rounded-xl">
+<div class="flex items-center gap-4">
+<div class="text-primary flex items-center justify-center rounded-lg bg-primary/10 shrink-0 size-12">
+<span class="material-symbols-outlined">workspace_premium</span>
+</div>
+<div class="flex flex-col justify-center">
+<p class="text-gray-900 dark:text-white text-base font-medium leading-normal line-clamp-1">Feedback 30 dias após</p>
+<p class="text-gray-500 dark:text-gray-400 text-sm font-normal leading-normal line-clamp-2">Avalie os resultados a longo prazo e incentive o retorno.</p>
+</div>
+</div>
+<div class="shrink-0">
+<label class="relative flex h-[31px] w-[51px] cursor-pointer items-center rounded-full border-none bg-gray-200 dark:bg-gray-700 p-0.5 has-[:checked]:justify-end has-[:checked]:bg-primary">
+<div class="h-full w-[27px] rounded-full bg-white transition-transform" style="box-shadow: rgba(0, 0, 0, 0.15) 0px 3px 8px, rgba(0, 0, 0, 0.06) 0px 3px 1px;"></div>
+<input class="invisible absolute" type="checkbox"/>
+</label>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section>
+<h2 class="text-gray-900 dark:text-white text-[22px] font-bold leading-tight tracking-[-0.015em] px-4 pb-3 pt-10">Histórico de Envios</h2>
+<div class="rounded-xl shadow-[0_0_12px_rgba(0,0,0,0.05)] bg-white dark:bg-background-dark/50 border border-gray-200 dark:border-gray-800">
+<div class="p-4 flex flex-wrap items-center justify-between gap-4 border-b border-gray-200 dark:border-gray-800">
+<h3 class="text-lg font-semibold text-gray-900 dark:text-white">Logs de Automação</h3>
+<div class="flex items-center gap-2">
+<input class="block w-full rounded-md border-gray-300 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-200 shadow-sm focus:border-primary focus:ring-primary sm:text-sm text-sm" type="date"/>
+<select class="block w-full rounded-md border-gray-300 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-200 shadow-sm focus:border-primary focus:ring-primary sm:text-sm text-sm">
+<option>Todos os Tipos</option>
+<option>Lembrete</option>
+<option>Feedback</option>
+</select>
+</div>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+<thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-800 dark:text-gray-400">
+<tr>
+<th class="px-6 py-3" scope="col">Data/Hora</th>
+<th class="px-6 py-3" scope="col">Destinatário</th>
+<th class="px-6 py-3" scope="col">Tipo</th>
+<th class="px-6 py-3" scope="col">Status</th>
+<th class="px-6 py-3" scope="col"><span class="sr-only">Ações</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="bg-white dark:bg-transparent border-b dark:border-gray-800 hover:bg-gray-50 dark:hover:bg-gray-700/50">
+<td class="px-6 py-4 font-medium text-gray-900 dark:text-white whitespace-nowrap">20/07/2024 10:30</td>
+<td class="px-6 py-4">Ana Clara Souza</td>
+<td class="px-6 py-4">Lembrete de Consulta</td>
+<td class="px-6 py-4"><span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-300">Enviado</span></td>
+<td class="px-6 py-4 text-right"><a class="font-medium text-primary hover:underline" href="#">Detalhes</a></td>
+</tr>
+<tr class="bg-white dark:bg-transparent border-b dark:border-gray-800 hover:bg-gray-50 dark:hover:bg-gray-700/50">
+<td class="px-6 py-4 font-medium text-gray-900 dark:text-white whitespace-nowrap">19/07/2024 18:00</td>
+<td class="px-6 py-4">Bruno Martins</td>
+<td class="px-6 py-4">Feedback 24h</td>
+<td class="px-6 py-4"><span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-300">Enviado</span></td>
+<td class="px-6 py-4 text-right"><a class="font-medium text-primary hover:underline" href="#">Detalhes</a></td>
+</tr>
+<tr class="bg-white dark:bg-transparent hover:bg-gray-50 dark:hover:bg-gray-700/50">
+<td class="px-6 py-4 font-medium text-gray-900 dark:text-white whitespace-nowrap">19/07/2024 09:15</td>
+<td class="px-6 py-4">Carla Dias</td>
+<td class="px-6 py-4">Lembrete de Consulta</td>
+<td class="px-6 py-4"><span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-300">Falhou</span></td>
+<td class="px-6 py-4 text-right"><a class="font-medium text-primary hover:underline" href="#">Detalhes</a></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+</div>
+</main>
+</div>
+</div>
+</body></html>

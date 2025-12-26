@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="pt"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Gestão de Integrações</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "primary": "#2b8cee",
+              "background-light": "#f6f7f8",
+              "background-dark": "#101922",
+            },
+            fontFamily: {
+              "display": ["Inter", "sans-serif"]
+            },
+            borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display">
+<div class="relative flex h-auto min-h-screen w-full flex-col dark group/design-root overflow-x-hidden">
+<div class="layout-container flex h-full grow flex-col">
+<!-- TopNavBar -->
+<header class="flex items-center justify-between whitespace-nowrap border-b border-solid border-gray-200/10 dark:border-white/10 px-6 md:px-10 py-3 bg-background-light dark:bg-background-dark/80 backdrop-blur-sm sticky top-0 z-10">
+<div class="flex items-center gap-4 text-gray-800 dark:text-white">
+<div class="size-6 text-primary">
+<svg fill="none" viewbox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+<path d="M4 4H17.3334V17.3334H30.6666V30.6666H44V44H4V4Z" fill="currentColor"></path>
+</svg>
+</div>
+<h2 class="text-gray-900 dark:text-white text-lg font-bold leading-tight tracking-[-0.015em]">Clínica Estética</h2>
+</div>
+<div class="flex flex-1 justify-end gap-2 sm:gap-4">
+<button class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-primary text-white text-sm font-bold leading-normal tracking-[0.015em]">
+<span class="truncate">Adicionar Integração</span>
+</button>
+<div class="hidden sm:flex items-center gap-2">
+<button class="flex max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 bg-gray-200/80 dark:bg-white/10 text-gray-800 dark:text-white gap-2 text-sm font-bold leading-normal tracking-[0.015em] min-w-0 px-2.5">
+<span class="material-symbols-outlined text-xl">help</span>
+</button>
+<button class="flex max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 bg-gray-200/80 dark:bg-white/10 text-gray-800 dark:text-white gap-2 text-sm font-bold leading-normal tracking-[0.015em] min-w-0 px-2.5">
+<span class="material-symbols-outlined text-xl">notifications</span>
+</button>
+<button class="flex max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 bg-gray-200/80 dark:bg-white/10 text-gray-800 dark:text-white gap-2 text-sm font-bold leading-normal tracking-[0.015em] min-w-0 px-2.5">
+<span class="material-symbols-outlined text-xl">settings</span>
+</button>
+</div>
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10" data-alt="User avatar placeholder image" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuC3o80t-yd68CD34ROMZEUR8vqS95wJHgpdxtysJz-k526olzxiF_WU_Q2idtqbmEeN9D4pWR64Z0kO2FNWHMfkzs-eoWHANV0u4hWgVYUXGdLQ1AFnPvaWdR7iQsvEVoPzFWEyuw3FpebzGDtMcBYKq5rvK-K4ciNF9IBYJSVGu8vgolsyQ18aGkWIQrJUhSopvs9fzh5Lzn3RgGucfVVXVyfdxs57S8rX7WzN15kmMlSAiLOPuBZXzvb4LINz6Vol7sTD_hStOw");'></div>
+</div>
+</header>
+<main class="flex flex-1 justify-center py-5 px-4 sm:px-6 lg:px-8">
+<div class="layout-content-container flex flex-col w-full max-w-5xl flex-1">
+<!-- PageHeading -->
+<div class="flex flex-wrap justify-between gap-4 p-4">
+<div class="flex min-w-72 flex-col gap-2">
+<p class="text-gray-900 dark:text-white text-4xl font-black leading-tight tracking-[-0.033em]">Gestão de Integrações</p>
+<p class="text-gray-600 dark:text-gray-400 text-base font-normal leading-normal">Conecte a sua clínica a ferramentas externas para automatizar processos e expandir funcionalidades.</p>
+</div>
+</div>
+<!-- Chips/Filters -->
+<div class="flex gap-2 p-3 flex-wrap pr-4 border-b border-gray-200/10 dark:border-white/10 mb-4">
+<button class="flex h-8 shrink-0 items-center justify-center gap-x-2 rounded-lg bg-primary pl-4 pr-4 text-white text-sm font-medium leading-normal">Todos</button>
+<button class="flex h-8 shrink-0 items-center justify-center gap-x-2 rounded-lg bg-gray-200/80 dark:bg-white/10 text-gray-800 dark:text-white pl-4 pr-4 text-sm font-medium leading-normal">Pagamentos</button>
+<button class="flex h-8 shrink-0 items-center justify-center gap-x-2 rounded-lg bg-gray-200/80 dark:bg-white/10 text-gray-800 dark:text-white pl-4 pr-4 text-sm font-medium leading-normal">Calendários</button>
+<button class="flex h-8 shrink-0 items-center justify-center gap-x-2 rounded-lg bg-gray-200/80 dark:bg-white/10 text-gray-800 dark:text-white pl-4 pr-4 text-sm font-medium leading-normal">Notificações</button>
+<button class="flex h-8 shrink-0 items-center justify-center gap-x-2 rounded-lg bg-gray-200/80 dark:bg-white/10 text-gray-800 dark:text-white pl-4 pr-4 text-sm font-medium leading-normal">Emissão de Notas Fiscais</button>
+</div>
+<!-- Cards Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4 p-4">
+<!-- Card 1: MercadoPago -->
+<div class="@container">
+<div class="flex flex-col items-stretch justify-start rounded-xl shadow-lg bg-white dark:bg-gray-800/20 border border-gray-200/10 dark:border-white/10">
+<div class="flex w-full items-center justify-between p-4 border-b border-gray-200/10 dark:border-white/10">
+<div class="flex items-center gap-3">
+<div class="size-10 bg-center bg-no-repeat bg-contain rounded-lg" data-alt="MercadoPago logo" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCZvNnOy_J2yb0kqQFrUXIwC1dRW3Z9vOKJeBZ3FCF2-O35vbYjDvsfJsm_CR1kbxiOOyxgy1oaUL20L2pg7nw24Gyo06uJXnvE81LwVW1Vhg0GFLJP8DKSaaIenmYkQaKZo1twlFCSjJ4Kt2Q3S3GFEgrxFsDtk2-YUPaGeA__wx7I_qNLcZ69GDC84BDfo0AOB3CcbF7Fu-K6E3liaBG2u2Cxwfhgivkr3ntx7vgmpViEZ_DDYYk4ngRGp-lKeH5tNdly7-etVQ");'></div>
+<p class="text-gray-900 dark:text-white text-lg font-bold leading-tight tracking-[-0.015em]">MercadoPago</p>
+</div>
+<div class="flex items-center gap-2 text-emerald-400">
+<span class="material-symbols-outlined text-base">check_circle</span>
+<p class="text-xs font-semibold">Conectado</p>
+</div>
+</div>
+<div class="flex w-full flex-col items-stretch justify-center gap-4 p-4">
+<p class="text-gray-600 dark:text-gray-400 text-sm font-normal leading-normal">Processe pagamentos online de forma segura através da maior plataforma da América Latina.</p>
+<div class="flex items-center justify-end gap-3">
+<button class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-9 px-4 bg-gray-200/80 dark:bg-white/10 text-gray-800 dark:text-white text-sm font-medium leading-normal">
+<span class="truncate">Desconectar</span>
+</button>
+<button class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-9 px-4 bg-primary text-white text-sm font-medium leading-normal">
+<span class="truncate">Configurar</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Card 2: ASAAS -->
+<div class="@container">
+<div class="flex flex-col items-stretch justify-start rounded-xl shadow-lg bg-white dark:bg-gray-800/20 border border-gray-200/10 dark:border-white/10">
+<div class="flex w-full items-center justify-between p-4 border-b border-gray-200/10 dark:border-white/10">
+<div class="flex items-center gap-3">
+<div class="size-10 bg-center bg-no-repeat bg-contain rounded-lg" data-alt="ASAAS payment gateway logo" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCl_cvJEJjk_ZtSd3HqSRRNPA7lHlm77QTE6QMbtMqehOfXiA3DuWQeJCJeG-tZjHHXgOjtYyr7U5236QE0xYuCUa89MYfn1fcdD0RA3D9t6PPFauVG64j7THGus6WWOoddm-u4Q8N35LRVzk5w45vB2okCkwSWXkEN4f-SeaWron0EK0sTjUvs7MGHk4GDCUCnGNVSwcup4hoTlm97KxbBrhJbrb1sWoBj7phBIIaA-XoNe7dzYfDTnXEFxnCJPZTcWEK3b20k3A");'></div>
+<p class="text-gray-900 dark:text-white text-lg font-bold leading-tight tracking-[-0.015em]">ASAAS</p>
+</div>
+<div class="flex items-center gap-2 text-gray-500 dark:text-gray-400">
+<span class="material-symbols-outlined text-base">cancel</span>
+<p class="text-xs font-semibold">Desconectado</p>
+</div>
+</div>
+<div class="flex w-full flex-col items-stretch justify-center gap-4 p-4">
+<p class="text-gray-600 dark:text-gray-400 text-sm font-normal leading-normal">Gateway de pagamento completo para cobranças automáticas, boletos e cartões de crédito.</p>
+<div class="flex items-center justify-end gap-3">
+<button class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-9 px-4 bg-primary text-white text-sm font-medium leading-normal">
+<span class="truncate">Conectar</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Card 3: Google Calendar -->
+<div class="@container">
+<div class="flex flex-col items-stretch justify-start rounded-xl shadow-lg bg-white dark:bg-gray-800/20 border border-gray-200/10 dark:border-white/10">
+<div class="flex w-full items-center justify-between p-4 border-b border-gray-200/10 dark:border-white/10">
+<div class="flex items-center gap-3">
+<div class="size-10 bg-center bg-no-repeat bg-contain rounded-lg" data-alt="Google Calendar logo" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBzK9AHJE6hr9vANtP_YZwofkAxG6sv1zwjWx87GIAN7lN7x-fYwCZA0G_qyxQRqPBjvvKNYu0fUXM7Q6eigHYU1hBCrcHoN_i17tTNc5xvMFsZAG4rEyNNqvAUX7c6nThT6J4YVJXEtynXw2bgiWNeW5qZ60IaWpBppC2MSWTnOj2cM-_2XUM3z6y2IagmSyrWnvkpyHgaQUyKv49OurwpcL7F49ciw0GgSZRAaz88FY-mv3Xjj4nOnVNVUJWr3HFsU4bAAP7piw");'></div>
+<p class="text-gray-900 dark:text-white text-lg font-bold leading-tight tracking-[-0.015em]">Google Calendar</p>
+</div>
+<div class="flex items-center gap-2 text-gray-500 dark:text-gray-400">
+<span class="material-symbols-outlined text-base">cancel</span>
+<p class="text-xs font-semibold">Desconectado</p>
+</div>
+</div>
+<div class="flex w-full flex-col items-stretch justify-center gap-4 p-4">
+<p class="text-gray-600 dark:text-gray-400 text-sm font-normal leading-normal">Sincronize os agendamentos da clínica com a sua agenda pessoal do Google.</p>
+<div class="flex items-center justify-end gap-3">
+<button class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-9 px-4 bg-primary text-white text-sm font-medium leading-normal">
+<span class="truncate">Conectar</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Card 4: WhatsApp Business -->
+<div class="@container">
+<div class="flex flex-col items-stretch justify-start rounded-xl shadow-lg bg-white dark:bg-gray-800/20 border border-gray-200/10 dark:border-white/10">
+<div class="flex w-full items-center justify-between p-4 border-b border-gray-200/10 dark:border-white/10">
+<div class="flex items-center gap-3">
+<div class="size-10 bg-center bg-no-repeat bg-contain rounded-lg" data-alt="WhatsApp Business logo" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAOHIWbRRIYgKoGtdiInsU3J0UEKpc3tVWadR20DluY36SWS9WYcUsGDPQAcVaiwcXAotDhi_DPksxVt4DDmvcLjqv8EAo6otLzx2PwU1Wc2qXaQ6w6ECcRb1Ru_DCdrlGcW7Q9rRDW8TPsxSTTuNSgRtGea5qoecW1bziw3-cKxQltbMECJnDLUn_9UOXE2draLykgehjSpbWnwQDCGMrm8xntT_AEhAtAwu53yeQooAzk-lWzNIxpbiZiqoT6Y9SJ-Dctpxiicg");'></div>
+<p class="text-gray-900 dark:text-white text-lg font-bold leading-tight tracking-[-0.015em]">WhatsApp Business</p>
+</div>
+<div class="flex items-center gap-2 text-emerald-400">
+<span class="material-symbols-outlined text-base">check_circle</span>
+<p class="text-xs font-semibold">Conectado</p>
+</div>
+</div>
+<div class="flex w-full flex-col items-stretch justify-center gap-4 p-4">
+<p class="text-gray-600 dark:text-gray-400 text-sm font-normal leading-normal">Envie lembretes de agendamentos e notificações automáticas para seus clientes via WhatsApp.</p>
+<div class="flex items-center justify-end gap-3">
+<button class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-9 px-4 bg-gray-200/80 dark:bg-white/10 text-gray-800 dark:text-white text-sm font-medium leading-normal">
+<span class="truncate">Desconectar</span>
+</button>
+<button class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-9 px-4 bg-primary text-white text-sm font-medium leading-normal">
+<span class="truncate">Configurar</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Card 5: NFe.io -->
+<div class="@container">
+<div class="flex flex-col items-stretch justify-start rounded-xl shadow-lg bg-white dark:bg-gray-800/20 border border-gray-200/10 dark:border-white/10">
+<div class="flex w-full items-center justify-between p-4 border-b border-gray-200/10 dark:border-white/10">
+<div class="flex items-center gap-3">
+<div class="size-10 bg-center bg-no-repeat bg-contain rounded-lg" data-alt="NFe.io tax invoice logo" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBcLv5QKg7tsihm6dcduJ1QjPgZUiv6PCpP2mrN_MRXCkARaweO6gbLv9A3fPWnTwZrYhrAVtA--cOIRiWBKqC7gRfV83_Bf2Cj1a1ttNlVa_O0hh0_9daBlj7uOGaU3a_iaV9A_e066KzyCdxLsPBqRvr4qLZY3TZdEOxjojnC8ggB_QCT68MxwiSWhwVYj1hFJGAfRE8FHbU-qw3KhWRQTtrLSlGMHUombGzlGg1ifui0Ri7e5714UqriownxsZkkUlKcnDLqYA");'></div>
+<p class="text-gray-900 dark:text-white text-lg font-bold leading-tight tracking-[-0.015em]">NFe.io</p>
+</div>
+<div class="flex items-center gap-2 text-gray-500 dark:text-gray-400">
+<span class="material-symbols-outlined text-base">cancel</span>
+<p class="text-xs font-semibold">Desconectado</p>
+</div>
+</div>
+<div class="flex w-full flex-col items-stretch justify-center gap-4 p-4">
+<p class="text-gray-600 dark:text-gray-400 text-sm font-normal leading-normal">Automatize a emissão de Notas Fiscais de Serviço (NF-e) para cada procedimento realizado.</p>
+<div class="flex items-center justify-end gap-3">
+<button class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-9 px-4 bg-primary text-white text-sm font-medium leading-normal">
+<span class="truncate">Conectar</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+</div>
+</div>
+</body></html>

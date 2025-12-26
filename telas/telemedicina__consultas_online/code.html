@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Telemedicina: Consultas Online</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#2b8cee",
+                        "background-light": "#f6f7f8",
+                        "background-dark": "#101922",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings:
+            'FILL' 0,
+            'wght' 400,
+            'GRAD' 0,
+            'opsz' 24
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-[#111418] dark:text-gray-200">
+<div class="flex h-screen w-full flex-col">
+<header class="flex items-center justify-between whitespace-nowrap border-b border-solid border-gray-200 dark:border-gray-700 bg-white dark:bg-background-dark px-6 py-3">
+<div class="flex items-center gap-4 text-[#111418] dark:text-white">
+<div class="size-6 text-primary">
+<svg fill="none" viewbox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+<path clip-rule="evenodd" d="M39.475 21.6262C40.358 21.4363 40.6863 21.5589 40.7581 21.5934C40.7876 21.655 40.8547 21.857 40.8082 22.3336C40.7408 23.0255 40.4502 24.0046 39.8572 25.2301C38.6799 27.6631 36.5085 30.6631 33.5858 33.5858C30.6631 36.5085 27.6632 38.6799 25.2301 39.8572C24.0046 40.4502 23.0255 40.7407 22.3336 40.8082C21.8571 40.8547 21.6551 40.7875 21.5934 40.7581C21.5589 40.6863 21.4363 40.358 21.6262 39.475C21.8562 38.4054 22.4689 36.9657 23.5038 35.2817C24.7575 33.2417 26.5497 30.9744 28.7621 28.762C30.9744 26.5497 33.2417 24.7574 35.2817 23.5037C36.9657 22.4689 38.4054 21.8562 39.475 21.6262ZM4.41189 29.2403L18.7597 43.5881C19.8813 44.7097 21.4027 44.9179 22.7217 44.7893C24.0585 44.659 25.5148 44.1631 26.9723 43.4579C29.9052 42.0387 33.2618 39.5667 36.4142 36.4142C39.5667 33.2618 42.0387 29.9052 43.4579 26.9723C44.1631 25.5148 44.659 24.0585 44.7893 22.7217C44.9179 21.4027 44.7097 19.8813 43.5881 18.7597L29.2403 4.41187C27.8527 3.02428 25.8765 3.02573 24.2861 3.36776C22.6081 3.72863 20.7334 4.58419 18.8396 5.74801C16.4978 7.18716 13.9881 9.18353 11.5858 11.5858C9.18354 13.988 7.18717 16.4978 5.74802 18.8396C4.58421 20.7334 3.72865 22.6081 3.36778 24.2861C3.02574 25.8765 3.02429 27.8527 4.41189 29.2403Z" fill="currentColor" fill-rule="evenodd"></path>
+</svg>
+</div>
+<h2 class="text-[#111418] dark:text-white text-lg font-bold leading-tight tracking-[-0.015em]">Clínica de Estética</h2>
+</div>
+<div class="flex flex-1 justify-center gap-8">
+<a class="text-[#111418] dark:text-gray-300 text-sm font-medium leading-normal" href="#">Dashboard</a>
+<a class="text-[#111418] dark:text-gray-300 text-sm font-medium leading-normal" href="#">Agenda</a>
+<a class="text-[#111418] dark:text-gray-300 text-sm font-medium leading-normal" href="#">Clientes</a>
+<a class="text-primary dark:text-primary text-sm font-bold leading-normal" href="#">Telemedicina</a>
+<a class="text-[#111418] dark:text-gray-300 text-sm font-medium leading-normal" href="#">Financeiro</a>
+</div>
+<div class="flex items-center gap-4">
+<div class="flex gap-2">
+<button class="flex max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 bg-gray-100 dark:bg-gray-700/50 text-[#111418] dark:text-gray-300 gap-2 text-sm font-bold leading-normal tracking-[0.015em] min-w-0 px-2.5">
+<span class="material-symbols-outlined text-xl">settings</span>
+</button>
+<button class="flex max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 bg-gray-100 dark:bg-gray-700/50 text-[#111418] dark:text-gray-300 gap-2 text-sm font-bold leading-normal tracking-[0.015em] min-w-0 px-2.5">
+<span class="material-symbols-outlined text-xl">notifications</span>
+</button>
+</div>
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10" data-alt="User avatar with a gradient background" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuA4Pp583rGINBeidwSXiOvdy7Z6quJzqO7IddmiYzfuUWjGo3riWc_xrf3wvVdcvk03rm-BNE0lV6w_Xz17YDfO0hNXDKIpKgzSmHPfL6rtpaSVCKqQCEwu2S1rFUsvYdehradXxnKH680otVuxpU9daYDeMft1HRMdtUnW2BMPzS5YTzQylvO1bBDHSGpAAN7L6EfIJzrvZgr3_sN-CW5HaASAOV3mnNFY8Fn_EWUtg9pYlYZx26YKxiHQzPnr7Gkygb1coGT_2Q");'></div>
+</div>
+</header>
+<main class="flex flex-1 flex-col overflow-y-auto p-6 lg:p-8">
+<div class="flex flex-wrap justify-between gap-3 mb-8">
+<div class="flex min-w-72 flex-col gap-2">
+<p class="text-[#111418] dark:text-white text-4xl font-black leading-tight tracking-[-0.033em]">Telemedicina: Consultas Online</p>
+<p class="text-[#617589] dark:text-gray-400 text-base font-normal leading-normal">Agende e realize consultas online para avaliação prévia de clientes.</p>
+</div>
+<button class="flex items-center justify-center gap-2 rounded-lg bg-primary px-5 py-3 text-sm font-bold text-white shadow-sm transition-colors hover:bg-primary/90">
+<span class="material-symbols-outlined">add</span>
+                    Agendar Nova Consulta
+                </button>
+</div>
+<div class="grid flex-1 grid-cols-12 gap-6">
+<!-- Left Column -->
+<div class="col-span-12 flex flex-col gap-6 lg:col-span-3">
+<div class="rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 p-4">
+<div class="flex min-w-72 flex-1 flex-col gap-0.5">
+<div class="flex items-center p-1 justify-between">
+<button class="rounded-full p-2 hover:bg-gray-100 dark:hover:bg-gray-700">
+<span class="material-symbols-outlined text-lg text-[#111418] dark:text-gray-300">chevron_left</span>
+</button>
+<p class="text-[#111418] dark:text-white text-base font-bold leading-tight flex-1 text-center">Julho 2024</p>
+<button class="rounded-full p-2 hover:bg-gray-100 dark:hover:bg-gray-700">
+<span class="material-symbols-outlined text-lg text-[#111418] dark:text-gray-300">chevron_right</span>
+</button>
+</div>
+<div class="grid grid-cols-7">
+<p class="text-gray-500 dark:text-gray-400 text-[13px] font-bold leading-normal tracking-[0.015em] flex h-10 w-full items-center justify-center pb-0.5">D</p>
+<p class="text-gray-500 dark:text-gray-400 text-[13px] font-bold leading-normal tracking-[0.015em] flex h-10 w-full items-center justify-center pb-0.5">S</p>
+<p class="text-gray-500 dark:text-gray-400 text-[13px] font-bold leading-normal tracking-[0.015em] flex h-10 w-full items-center justify-center pb-0.5">T</p>
+<p class="text-gray-500 dark:text-gray-400 text-[13px] font-bold leading-normal tracking-[0.015em] flex h-10 w-full items-center justify-center pb-0.5">Q</p>
+<p class="text-gray-500 dark:text-gray-400 text-[13px] font-bold leading-normal tracking-[0.015em] flex h-10 w-full items-center justify-center pb-0.5">Q</p>
+<p class="text-gray-500 dark:text-gray-400 text-[13px] font-bold leading-normal tracking-[0.015em] flex h-10 w-full items-center justify-center pb-0.5">S</p>
+<p class="text-gray-500 dark:text-gray-400 text-[13px] font-bold leading-normal tracking-[0.015em] flex h-10 w-full items-center justify-center pb-0.5">S</p>
+<button class="h-10 w-full text-gray-400 dark:text-gray-500 text-sm font-medium leading-normal"><div class="flex size-full items-center justify-center rounded-full">30</div></button>
+<button class="h-10 w-full text-[#111418] dark:text-gray-300 text-sm font-medium leading-normal"><div class="flex size-full items-center justify-center rounded-full hover:bg-gray-100 dark:hover:bg-gray-700">1</div></button>
+<button class="h-10 w-full text-[#111418] dark:text-gray-300 text-sm font-medium leading-normal"><div class="flex size-full items-center justify-center rounded-full hover:bg-gray-100 dark:hover:bg-gray-700">2</div></button>
+<button class="h-10 w-full text-[#111418] dark:text-gray-300 text-sm font-medium leading-normal"><div class="flex size-full items-center justify-center rounded-full hover:bg-gray-100 dark:hover:bg-gray-700">3</div></button>
+<button class="h-10 w-full text-[#111418] dark:text-gray-300 text-sm font-medium leading-normal"><div class="flex size-full items-center justify-center rounded-full hover:bg-gray-100 dark:hover:bg-gray-700">4</div></button>
+<button class="h-10 w-full text-white text-sm font-medium leading-normal"><div class="flex size-full items-center justify-center rounded-full bg-primary">5</div></button>
+<button class="h-10 w-full text-[#111418] dark:text-gray-300 text-sm font-medium leading-normal"><div class="flex size-full items-center justify-center rounded-full hover:bg-gray-100 dark:hover:bg-gray-700">6</div></button>
+<button class="h-10 w-full text-[#111418] dark:text-gray-300 text-sm font-medium leading-normal"><div class="flex size-full items-center justify-center rounded-full hover:bg-gray-100 dark:hover:bg-gray-700">7</div></button>
+<button class="h-10 w-full text-[#111418] dark:text-gray-300 text-sm font-medium leading-normal"><div class="flex size-full items-center justify-center rounded-full hover:bg-gray-100 dark:hover:bg-gray-700">8</div></button>
+<button class="h-10 w-full text-[#111418] dark:text-gray-300 text-sm font-medium leading-normal"><div class="flex size-full items-center justify-center rounded-full hover:bg-gray-100 dark:hover:bg-gray-700">9</div></button>
+<button class="h-10 w-full text-[#111418] dark:text-gray-300 text-sm font-medium leading-normal"><div class="flex size-full items-center justify-center rounded-full hover:bg-gray-100 dark:hover:bg-gray-700">10</div></button>
+<button class="h-10 w-full text-[#111418] dark:text-gray-300 text-sm font-medium leading-normal"><div class="flex size-full items-center justify-center rounded-full hover:bg-gray-100 dark:hover:bg-gray-700">11</div></button>
+<button class="h-10 w-full text-[#111418] dark:text-gray-300 text-sm font-medium leading-normal"><div class="flex size-full items-center justify-center rounded-full hover:bg-gray-100 dark:hover:bg-gray-700">12</div></button>
+<button class="h-10 w-full text-[#111418] dark:text-gray-300 text-sm font-medium leading-normal"><div class="flex size-full items-center justify-center rounded-full hover:bg-gray-100 dark:hover:bg-gray-700">13</div></button>
+<button class="h-10 w-full text-[#111418] dark:text-gray-300 text-sm font-medium leading-normal"><div class="flex size-full items-center justify-center rounded-full hover:bg-gray-100 dark:hover:bg-gray-700">14</div></button>
+<button class="h-10 w-full text-[#111418] dark:text-gray-300 text-sm font-medium leading-normal"><div class="flex size-full items-center justify-center rounded-full hover:bg-gray-100 dark:hover:bg-gray-700">15</div></button>
+<button class="h-10 w-full text-[#111418] dark:text-gray-300 text-sm font-medium leading-normal"><div class="flex size-full items-center justify-center rounded-full hover:bg-gray-100 dark:hover:bg-gray-700">16</div></button>
+<button class="h-10 w-full text-[#111418] dark:text-gray-300 text-sm font-medium leading-normal"><div class="flex size-full items-center justify-center rounded-full hover:bg-gray-100 dark:hover:bg-gray-700">17</div></button>
+<button class="h-10 w-full text-[#111418] dark:text-gray-300 text-sm font-medium leading-normal"><div class="flex size-full items-center justify-center rounded-full hover:bg-gray-100 dark:hover:bg-gray-700">18</div></button>
+<button class="h-10 w-full text-[#111418] dark:text-gray-300 text-sm font-medium leading-normal"><div class="flex size-full items-center justify-center rounded-full hover:bg-gray-100 dark:hover:bg-gray-700">19</div></button>
+<button class="h-10 w-full text-[#111418] dark:text-gray-300 text-sm font-medium leading-normal"><div class="flex size-full items-center justify-center rounded-full hover:bg-gray-100 dark:hover:bg-gray-700">20</div></button>
+<button class="h-10 w-full text-[#111418] dark:text-gray-300 text-sm font-medium leading-normal"><div class="flex size-full items-center justify-center rounded-full hover:bg-gray-100 dark:hover:bg-gray-700">21</div></button>
+<button class="h-10 w-full text-[#111418] dark:text-gray-300 text-sm font-medium leading-normal"><div class="flex size-full items-center justify-center rounded-full hover:bg-gray-100 dark:hover:bg-gray-700">22</div></button>
+<button class="h-10 w-full text-[#111418] dark:text-gray-300 text-sm font-medium leading-normal"><div class="flex size-full items-center justify-center rounded-full hover:bg-gray-100 dark:hover:bg-gray-700">23</div></button>
+<button class="h-10 w-full text-[#111418] dark:text-gray-300 text-sm font-medium leading-normal"><div class="flex size-full items-center justify-center rounded-full hover:bg-gray-100 dark:hover:bg-gray-700">24</div></button>
+<button class="h-10 w-full text-[#111418] dark:text-gray-300 text-sm font-medium leading-normal"><div class="flex size-full items-center justify-center rounded-full hover:bg-gray-100 dark:hover:bg-gray-700">25</div></button>
+<button class="h-10 w-full text-[#111418] dark:text-gray-300 text-sm font-medium leading-normal"><div class="flex size-full items-center justify-center rounded-full hover:bg-gray-100 dark:hover:bg-gray-700">26</div></button>
+<button class="h-10 w-full text-[#111418] dark:text-gray-300 text-sm font-medium leading-normal"><div class="flex size-full items-center justify-center rounded-full hover:bg-gray-100 dark:hover:bg-gray-700">27</div></button>
+<button class="h-10 w-full text-[#111418] dark:text-gray-300 text-sm font-medium leading-normal"><div class="flex size-full items-center justify-center rounded-full hover:bg-gray-100 dark:hover:bg-gray-700">28</div></button>
+<button class="h-10 w-full text-[#111418] dark:text-gray-300 text-sm font-medium leading-normal"><div class="flex size-full items-center justify-center rounded-full hover:bg-gray-100 dark:hover:bg-gray-700">29</div></button>
+<button class="h-10 w-full text-[#111418] dark:text-gray-300 text-sm font-medium leading-normal"><div class="flex size-full items-center justify-center rounded-full hover:bg-gray-100 dark:hover:bg-gray-700">30</div></button>
+<button class="h-10 w-full text-gray-400 dark:text-gray-500 text-sm font-medium leading-normal"><div class="flex size-full items-center justify-center rounded-full">1</div></button>
+</div>
+</div>
+</div>
+<div class="flex flex-1 flex-col gap-4 rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 p-4">
+<h2 class="text-[#111418] dark:text-white text-lg font-bold leading-tight tracking-[-0.015em] px-2">Próximas Consultas</h2>
+<div class="flex flex-col">
+<div class="flex cursor-pointer items-center gap-4 rounded-lg bg-primary/20 dark:bg-primary/30 px-4 min-h-[72px] py-2 justify-between">
+<div class="flex items-center gap-4">
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full h-12 w-12" data-alt="Female client avatar with curly hair" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCm3It6hIjef3A0-4_KWw3oxabmneGO0J227aK23PUK8-AAgepl8fvbRglifcfgxewdWLOFxPrkL8-LNeoBlA3I1CRvkMTuxwMYDxNdYZKx4dEK35Ox_LShU1z_p6itTwR4-iyBS4MSAheCVgOfrk11_GMqpUDkNFaJY5Wy_qPXa5_OpgTefxhZh9Jzp4k4AMeX2L3lHt-NwTnpxcu_EWXYpJKAWdV4hjZfTFKJEUchaaak6RBKejjN1c9wLEdAkymITP2gx1T-oA");'></div>
+<div class="flex flex-col justify-center">
+<p class="text-[#111418] dark:text-white text-base font-medium leading-normal line-clamp-1">Ana Silva</p>
+<p class="text-[#617589] dark:text-gray-400 text-sm font-normal leading-normal line-clamp-2">Consulta de Avaliação</p>
+</div>
+</div>
+<div class="shrink-0"><p class="text-[#617589] dark:text-gray-400 text-sm font-normal leading-normal">14:00h</p></div>
+</div>
+<div class="flex cursor-pointer items-center gap-4 rounded-lg px-4 min-h-[72px] py-2 justify-between hover:bg-gray-100 dark:hover:bg-gray-700/50">
+<div class="flex items-center gap-4">
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full h-12 w-12" data-alt="Male client avatar with short hair" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuD3PJtl9Jg64_O9xKcWya4ypIB8fTqg0BD3q9wMduSimWZDRMDhmuUfuoBKwN7nKXoSvHVp7DcP-XV_pUPOR2wZNivBfzD8oM9PdIg2O1v_-3CafAS65iRhT4F9R1Poa9zjSpbXr8WwnGY9GHqA91f3tY8qAYN4MSBWB6MwbCPpzoK_mtB3E3wOMcLR4e_r3MiQvv-uunmMP0aRbohI2FuZPIQfFKZbZg-Y_PNozQH5CQEOzHdFqx40Bgx0OwZ6UqplG7Mi_huY1Q");'></div>
+<div class="flex flex-col justify-center">
+<p class="text-[#111418] dark:text-white text-base font-medium leading-normal line-clamp-1">João Pereira</p>
+<p class="text-[#617589] dark:text-gray-400 text-sm font-normal leading-normal line-clamp-2">Retorno</p>
+</div>
+</div>
+<div class="shrink-0"><p class="text-[#617589] dark:text-gray-400 text-sm font-normal leading-normal">15:30h</p></div>
+</div>
+<div class="flex cursor-pointer items-center gap-4 rounded-lg px-4 min-h-[72px] py-2 justify-between hover:bg-gray-100 dark:hover:bg-gray-700/50">
+<div class="flex items-center gap-4">
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full h-12 w-12" data-alt="Female client avatar with glasses" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuATNeCo_Gi66ApuxuElrx6Z42tHU0R2JbDvvmXjSFXGhFwNDOL7iujb-Ab-T4w-EDUILFqUSqgzlstAHEoz8lH7T0AcwGFg363buSToyh0VUYnJIYtp08JboPnaNinFsBzG1N35jevSrh8brq2oRR9QkyRPXK0_kd5K2fEeQ-xtQIvF27OJ1GZnzsEILoFSrX1H__iS_8dvNjpP_PCgi0HKs60QlUcxkaxe4qDRp6fo3-SxB8LP9bXCA7xWFJq66TbXIjRH9KyOBw");'></div>
+<div class="flex flex-col justify-center">
+<p class="text-[#111418] dark:text-white text-base font-medium leading-normal line-clamp-1">Mariana Costa</p>
+<p class="text-[#617589] dark:text-gray-400 text-sm font-normal leading-normal line-clamp-2">Consulta de Avaliação</p>
+</div>
+</div>
+<div class="shrink-0"><p class="text-[#617589] dark:text-gray-400 text-sm font-normal leading-normal">16:00h</p></div>
+</div>
+</div>
+</div>
+</div>
+<!-- Center Column -->
+<div class="col-span-12 flex flex-col gap-6 lg:col-span-6">
+<div class="relative flex min-h-[400px] flex-1 flex-col overflow-hidden rounded-xl bg-gray-900">
+<img class="absolute inset-0 h-full w-full object-cover" data-alt="A professional female doctor smiling warmly at the camera" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBgeFGcn9SHy0ISzHXirTof5koti8w0eZx5W86u5f-AdOzn0ExzRHDvlflM2pjh6o9tL3L2DCY25g2pmIKYzF0CuXs-PNS7irT9UdAXzF_IYI1VzPuS4g_LXWXXNVQYMVn7enwJPDRUMapWg_AEF59qJ65RkFn3lXcQseLwxxEM8tSLpRsmVR3bbz8Y3EGKcFpvRVMpb01X2q5iVoKZ-HGqUTkMbClwVfyVdt7tu7tB0kVOQDGKHmfwWLFXWVOABeOViEmEAkLqQQ"/>
+<div class="absolute inset-0 bg-black/40"></div>
+<div class="relative z-10 mt-auto flex items-center justify-between p-4 text-white">
+<p class="font-semibold">Consulta com Ana Silva</p>
+<p class="rounded-md bg-black/50 px-2 py-1 text-sm font-mono">15:32</p>
+</div>
+<div class="absolute bottom-4 left-1/2 z-20 -translate-x-1/2 transform">
+<div class="flex items-center gap-4 rounded-full bg-black/50 p-2 backdrop-blur-sm">
+<button class="flex h-12 w-12 items-center justify-center rounded-full bg-white/20 text-white transition-colors hover:bg-white/30">
+<span class="material-symbols-outlined">mic_off</span>
+</button>
+<button class="flex h-12 w-12 items-center justify-center rounded-full bg-white/20 text-white transition-colors hover:bg-white/30">
+<span class="material-symbols-outlined">videocam_off</span>
+</button>
+<button class="flex h-14 w-14 items-center justify-center rounded-full bg-red-600 text-white transition-colors hover:bg-red-700">
+<span class="material-symbols-outlined">call_end</span>
+</button>
+<button class="flex h-12 w-12 items-center justify-center rounded-full bg-white/20 text-white transition-colors hover:bg-white/30">
+<span class="material-symbols-outlined">present_to_all</span>
+</button>
+<button class="flex h-12 w-12 items-center justify-center rounded-full bg-white/20 text-white transition-colors hover:bg-white/30">
+<span class="material-symbols-outlined">more_vert</span>
+</button>
+</div>
+</div>
+<div class="absolute right-4 top-4 h-36 w-28 overflow-hidden rounded-lg border-2 border-white/50 bg-gray-700">
+<img class="h-full w-full object-cover" data-alt="A portrait of a woman, the client, participating in the video call" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDMAkfASlvBAfK5993Xu1ByI-X-7TFdJ2nhctacoahI3CEgfbzJ5fZpomfZZjDdjaeIMOiUybmakKco7BNjZRH2jzhizM4c6urYfSmLByn4D0uA55qdgEoW9jm7KokOjGIoupM8QkqWg6xAWCJ0E5c6iGBWiMX-qyPbrFWOWRThTFpyfx9ueU32oWS5V71Y__QSe-pSztiUHYxP4qStEBJOGGycxTUYD1XWZWJwW0tuhwGqubS9fwejK_DdwIoCioFawYVu7VMOXA"/>
+</div>
+</div>
+<div class="flex-shrink-0 rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 p-2">
+<div class="flex items-center border-b border-gray-200 dark:border-gray-700">
+<button class="border-b-2 border-primary px-4 py-3 text-sm font-semibold text-primary">Informações do Cliente</button>
+<button class="border-b-2 border-transparent px-4 py-3 text-sm font-medium text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200">Histórico de Consultas</button>
+<button class="border-b-2 border-transparent px-4 py-3 text-sm font-medium text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200">Documentos</button>
+</div>
+<div class="p-4 grid grid-cols-2 gap-4 text-sm">
+<div><p class="text-gray-500 dark:text-gray-400">Nome Completo</p><p class="font-medium dark:text-white">Ana Júlia Silva</p></div>
+<div><p class="text-gray-500 dark:text-gray-400">Data de Nascimento</p><p class="font-medium dark:text-white">15/08/1992</p></div>
+<div><p class="text-gray-500 dark:text-gray-400">Telefone</p><p class="font-medium dark:text-white">(11) 98765-4321</p></div>
+<div><p class="text-gray-500 dark:text-gray-400">Email</p><p class="font-medium dark:text-white">ana.silva@email.com</p></div>
+<div class="col-span-2"><p class="text-gray-500 dark:text-gray-400">Queixa Principal</p><p class="font-medium dark:text-white">Avaliação para procedimento de harmonização facial e tratamento para melasma.</p></div>
+</div>
+</div>
+</div>
+<!-- Right Column -->
+<div class="col-span-12 flex flex-col gap-6 lg:col-span-3">
+<div class="flex h-full flex-col rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800">
+<h2 class="text-[#111418] dark:text-white text-lg font-bold leading-tight tracking-[-0.015em] p-4 border-b border-gray-200 dark:border-gray-700">Anotações da Consulta</h2>
+<div class="flex-1 p-4">
+<textarea class="h-full w-full resize-none rounded-lg border-gray-300 bg-gray-50 dark:bg-gray-700 dark:border-gray-600 dark:text-gray-200 focus:border-primary focus:ring-primary text-sm p-3" placeholder="Digite suas anotações aqui..."></textarea>
+</div>
+<div class="border-t border-gray-200 dark:border-gray-700 p-4">
+<button class="w-full flex items-center justify-center gap-2 rounded-lg bg-primary px-5 py-3 text-sm font-bold text-white shadow-sm transition-colors hover:bg-primary/90">
+                                Salvar Anotações
+                            </button>
+</div>
+</div>
+</div>
+</div>
+</main>
+</div>
+</body></html>

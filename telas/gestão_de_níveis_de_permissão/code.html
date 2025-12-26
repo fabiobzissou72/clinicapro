@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="pt-BR"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Gestão de Níveis de Permissão</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings:
+            'FILL' 0,
+            'wght' 400,
+            'GRAD' 0,
+            'opsz' 24;
+        }
+    </style>
+<script>
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "primary": "#2b8cee",
+              "background-light": "#f6f7f8",
+              "background-dark": "#101922",
+            },
+            fontFamily: {
+              "display": ["Inter", "sans-serif"]
+            },
+            borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-gray-800 dark:text-gray-200">
+<div class="flex h-screen min-h-[700px]">
+<!-- Side Navigation -->
+<aside class="flex h-full w-72 flex-col bg-white dark:bg-[#1C252E] p-4 border-r border-gray-200 dark:border-gray-700/50">
+<div class="flex flex-col gap-4">
+<div class="flex flex-col">
+<h1 class="text-gray-900 dark:text-white text-base font-semibold leading-normal">Clínica Estética</h1>
+<p class="text-gray-500 dark:text-[#9dabb9] text-sm font-normal leading-normal">Gestão de Acesso</p>
+</div>
+<div class="flex flex-col gap-2">
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg bg-primary/10 dark:bg-primary/20 text-primary" href="#">
+<span class="material-symbols-outlined text-xl !fill-1">shield_person</span>
+<p class="text-sm font-medium leading-normal">Administrador</p>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-white/10 text-gray-700 dark:text-gray-300" href="#">
+<span class="material-symbols-outlined text-xl">badge</span>
+<p class="text-sm font-medium leading-normal">Recepção</p>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-white/10 text-gray-700 dark:text-gray-300" href="#">
+<span class="material-symbols-outlined text-xl">magic_button</span>
+<p class="text-sm font-medium leading-normal">Profissional de Estética</p>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-white/10 text-gray-700 dark:text-gray-300" href="#">
+<span class="material-symbols-outlined text-xl">business_center</span>
+<p class="text-sm font-medium leading-normal">Gerente</p>
+</a>
+</div>
+</div>
+<div class="mt-auto flex flex-col gap-4">
+<button class="flex w-full cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-primary text-white text-sm font-bold leading-normal tracking-[0.015em] hover:bg-primary/90 transition-colors">
+<span class="truncate">＋ Criar Novo Perfil</span>
+</button>
+<div class="flex flex-col gap-1">
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-white/10 text-gray-700 dark:text-gray-300" href="#">
+<span class="material-symbols-outlined text-xl">settings</span>
+<p class="text-sm font-medium leading-normal">Configurações</p>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-white/10 text-gray-700 dark:text-gray-300" href="#">
+<span class="material-symbols-outlined text-xl">logout</span>
+<p class="text-sm font-medium leading-normal">Sair</p>
+</a>
+</div>
+</div>
+</aside>
+<!-- Main Content -->
+<main class="flex-1 overflow-y-auto">
+<div class="p-8 max-w-4xl mx-auto">
+<!-- Page Heading -->
+<div class="flex flex-wrap justify-between gap-3 mb-8">
+<div class="flex flex-col gap-3">
+<h1 class="text-gray-900 dark:text-white text-4xl font-black leading-tight tracking-[-0.033em]">Permissões para: Administrador</h1>
+<p class="text-gray-500 dark:text-[#9dabb9] text-base font-normal leading-normal">Configure o que os usuários com este perfil podem visualizar e editar no sistema.</p>
+</div>
+</div>
+<!-- Permissions Accordions -->
+<div class="flex flex-col gap-3">
+<details class="flex flex-col rounded-lg bg-white dark:bg-[#1C252E] group" open="">
+<summary class="flex cursor-pointer items-center justify-between gap-6 p-4">
+<div class="flex flex-col">
+<p class="text-gray-900 dark:text-white text-base font-medium leading-normal">Agenda</p>
+<p class="text-gray-500 dark:text-[#9dabb9] text-sm font-normal leading-normal">Permissões de visualização e gerenciamento de agendamentos.</p>
+</div>
+<span class="material-symbols-outlined text-gray-500 dark:text-gray-400 group-open:rotate-180 transition-transform">expand_more</span>
+</summary>
+<div class="border-t border-gray-200 dark:border-gray-700/50 px-4 divide-y divide-gray-200 dark:divide-gray-700/50">
+<div class="flex items-center justify-between gap-4 py-4">
+<p class="text-gray-700 dark:text-gray-300 text-sm font-normal leading-normal flex-1 truncate">Visualizar própria agenda</p>
+<label class="relative flex h-[31px] w-[51px] cursor-pointer items-center rounded-full border-none bg-gray-200 dark:bg-[#283039] p-0.5 has-[:checked]:justify-end has-[:checked]:bg-primary">
+<div class="h-full w-[27px] rounded-full bg-white transition-transform" style="box-shadow: rgba(0, 0, 0, 0.15) 0px 3px 8px, rgba(0, 0, 0, 0.06) 0px 3px 1px;"></div>
+<input checked="" class="invisible absolute" type="checkbox"/>
+</label>
+</div>
+<div class="flex items-center justify-between gap-4 py-4">
+<p class="text-gray-700 dark:text-gray-300 text-sm font-normal leading-normal flex-1 truncate">Visualizar agenda de todos</p>
+<label class="relative flex h-[31px] w-[51px] cursor-pointer items-center rounded-full border-none bg-gray-200 dark:bg-[#283039] p-0.5 has-[:checked]:justify-end has-[:checked]:bg-primary">
+<div class="h-full w-[27px] rounded-full bg-white transition-transform" style="box-shadow: rgba(0, 0, 0, 0.15) 0px 3px 8px, rgba(0, 0, 0, 0.06) 0px 3px 1px;"></div>
+<input checked="" class="invisible absolute" type="checkbox"/>
+</label>
+</div>
+<div class="flex items-center justify-between gap-4 py-4">
+<p class="text-gray-700 dark:text-gray-300 text-sm font-normal leading-normal flex-1 truncate">Agendar/Editar agendamentos</p>
+<label class="relative flex h-[31px] w-[51px] cursor-pointer items-center rounded-full border-none bg-gray-200 dark:bg-[#283039] p-0.5 has-[:checked]:justify-end has-[:checked]:bg-primary">
+<div class="h-full w-[27px] rounded-full bg-white transition-transform" style="box-shadow: rgba(0, 0, 0, 0.15) 0px 3px 8px, rgba(0, 0, 0, 0.06) 0px 3px 1px;"></div>
+<input checked="" class="invisible absolute" type="checkbox"/>
+</label>
+</div>
+<div class="flex items-center justify-between gap-4 py-4">
+<p class="text-gray-700 dark:text-gray-300 text-sm font-normal leading-normal flex-1 truncate">Cancelar agendamentos</p>
+<label class="relative flex h-[31px] w-[51px] cursor-pointer items-center rounded-full border-none bg-gray-200 dark:bg-[#283039] p-0.5 has-[:checked]:justify-end has-[:checked]:bg-primary">
+<div class="h-full w-[27px] rounded-full bg-white transition-transform" style="box-shadow: rgba(0, 0, 0, 0.15) 0px 3px 8px, rgba(0, 0, 0, 0.06) 0px 3px 1px;"></div>
+<input class="invisible absolute" type="checkbox"/>
+</label>
+</div>
+</div>
+</details>
+<details class="flex flex-col rounded-lg bg-white dark:bg-[#1C252E] group">
+<summary class="flex cursor-pointer items-center justify-between gap-6 p-4">
+<div class="flex flex-col">
+<p class="text-gray-900 dark:text-white text-base font-medium leading-normal">Pacientes</p>
+<p class="text-gray-500 dark:text-[#9dabb9] text-sm font-normal leading-normal">Permissões de acesso aos dados e prontuários dos pacientes.</p>
+</div>
+<span class="material-symbols-outlined text-gray-500 dark:text-gray-400 group-open:rotate-180 transition-transform">expand_more</span>
+</summary>
+<div class="border-t border-gray-200 dark:border-gray-700/50 px-4 divide-y divide-gray-200 dark:divide-gray-700/50">
+<div class="flex items-center justify-between gap-4 py-4">
+<p class="text-gray-700 dark:text-gray-300 text-sm font-normal leading-normal flex-1 truncate">Visualizar cadastro de pacientes</p>
+<label class="relative flex h-[31px] w-[51px] cursor-pointer items-center rounded-full border-none bg-gray-200 dark:bg-[#283039] p-0.5 has-[:checked]:justify-end has-[:checked]:bg-primary">
+<div class="h-full w-[27px] rounded-full bg-white transition-transform" style="box-shadow: rgba(0, 0, 0, 0.15) 0px 3px 8px, rgba(0, 0, 0, 0.06) 0px 3px 1px;"></div>
+<input checked="" class="invisible absolute" type="checkbox"/>
+</label>
+</div>
+<div class="flex items-center justify-between gap-4 py-4">
+<p class="text-gray-700 dark:text-gray-300 text-sm font-normal leading-normal flex-1 truncate">Criar/Editar cadastro de pacientes</p>
+<label class="relative flex h-[31px] w-[51px] cursor-pointer items-center rounded-full border-none bg-gray-200 dark:bg-[#283039] p-0.5 has-[:checked]:justify-end has-[:checked]:bg-primary">
+<div class="h-full w-[27px] rounded-full bg-white transition-transform" style="box-shadow: rgba(0, 0, 0, 0.15) 0px 3px 8px, rgba(0, 0, 0, 0.06) 0px 3px 1px;"></div>
+<input checked="" class="invisible absolute" type="checkbox"/>
+</label>
+</div>
+<div class="flex items-center justify-between gap-4 py-4">
+<p class="text-gray-700 dark:text-gray-300 text-sm font-normal leading-normal flex-1 truncate">Visualizar prontuário/histórico</p>
+<label class="relative flex h-[31px] w-[51px] cursor-pointer items-center rounded-full border-none bg-gray-200 dark:bg-[#283039] p-0.5 has-[:checked]:justify-end has-[:checked]:bg-primary">
+<div class="h-full w-[27px] rounded-full bg-white transition-transform" style="box-shadow: rgba(0, 0, 0, 0.15) 0px 3px 8px, rgba(0, 0, 0, 0.06) 0px 3px 1px;"></div>
+<input checked="" class="invisible absolute" type="checkbox"/>
+</label>
+</div>
+</div>
+</details>
+<details class="flex flex-col rounded-lg bg-white dark:bg-[#1C252E] group">
+<summary class="flex cursor-pointer items-center justify-between gap-6 p-4">
+<div class="flex flex-col">
+<p class="text-gray-900 dark:text-white text-base font-medium leading-normal">Financeiro</p>
+<p class="text-gray-500 dark:text-[#9dabb9] text-sm font-normal leading-normal">Permissões de acesso a relatórios e registros financeiros.</p>
+</div>
+<span class="material-symbols-outlined text-gray-500 dark:text-gray-400 group-open:rotate-180 transition-transform">expand_more</span>
+</summary>
+<div class="border-t border-gray-200 dark:border-gray-700/50 px-4 divide-y divide-gray-200 dark:divide-gray-700/50">
+<div class="flex items-center justify-between gap-4 py-4">
+<p class="text-gray-700 dark:text-gray-300 text-sm font-normal leading-normal flex-1 truncate">Visualizar faturamento e relatórios</p>
+<label class="relative flex h-[31px] w-[51px] cursor-pointer items-center rounded-full border-none bg-gray-200 dark:bg-[#283039] p-0.5 has-[:checked]:justify-end has-[:checked]:bg-primary">
+<div class="h-full w-[27px] rounded-full bg-white transition-transform" style="box-shadow: rgba(0, 0, 0, 0.15) 0px 3px 8px, rgba(0, 0, 0, 0.06) 0px 3px 1px;"></div>
+<input checked="" class="invisible absolute" type="checkbox"/>
+</label>
+</div>
+<div class="flex items-center justify-between gap-4 py-4">
+<p class="text-gray-700 dark:text-gray-300 text-sm font-normal leading-normal flex-1 truncate">Registrar pagamentos</p>
+<label class="relative flex h-[31px] w-[51px] cursor-pointer items-center rounded-full border-none bg-gray-200 dark:bg-[#283039] p-0.5 has-[:checked]:justify-end has-[:checked]:bg-primary">
+<div class="h-full w-[27px] rounded-full bg-white transition-transform" style="box-shadow: rgba(0, 0, 0, 0.15) 0px 3px 8px, rgba(0, 0, 0, 0.06) 0px 3px 1px;"></div>
+<input class="invisible absolute" type="checkbox"/>
+</label>
+</div>
+</div>
+</details>
+</div>
+<!-- Action Buttons -->
+<div class="mt-8 flex justify-end gap-4">
+<button class="flex min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-white text-sm font-bold leading-normal tracking-[0.015em] hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors">
+<span class="truncate">Cancelar</span>
+</button>
+<button class="flex min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-primary text-white text-sm font-bold leading-normal tracking-[0.015em] hover:bg-primary/90 transition-colors">
+<span class="truncate">Salvar Alterações</span>
+</button>
+</div>
+</div>
+</main>
+</div>
+</body></html>

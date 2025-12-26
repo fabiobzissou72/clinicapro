@@ -1,5 +1,5 @@
 from pydantic_settings import BaseSettings
-from typing import List
+from typing import List, Optional
 
 class Settings(BaseSettings):
     # API
@@ -12,16 +12,16 @@ class Settings(BaseSettings):
     SUPABASE_KEY: str
     SUPABASE_SERVICE_ROLE_KEY: str
 
-    # OpenAI
-    OPENAI_API_KEY: str
+    # OpenAI (opcional)
+    OPENAI_API_KEY: str = ""
 
-    # Claude
+    # Claude (opcional)
     CLAUDE_API_KEY: str = ""
 
-    # WhatsApp Evolution API
-    EVOLUTION_API_URL: str
-    EVOLUTION_API_KEY: str
-    WHATSAPP_INSTANCE_NAME: str
+    # WhatsApp Evolution API (opcional)
+    EVOLUTION_API_URL: str = "http://localhost:8080"
+    EVOLUTION_API_KEY: str = ""
+    WHATSAPP_INSTANCE_NAME: str = "clinica-estetica"
 
     # Payment Gateways
     MERCADOPAGO_ACCESS_TOKEN: str = ""

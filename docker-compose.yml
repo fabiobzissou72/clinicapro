@@ -1,0 +1,156 @@
+version: '3.8'
+
+services:
+  # API FastAPI
+  api:
+    build:
+      context: ./api
+      dockerfile: Dockerfile
+    container_name: clinica-api
+    restart: unless-stopped
+    ports:
+      - "8000:8000"
+    environment:
+      - SUPABASE_URL=${SUPABASE_URL}
+      - SUPABASE_KEY=${SUPABASE_KEY}
+      - SUPABASE_SERVICE_ROLE_KEY=${SUPABASE_SERVICE_ROLE_KEY}
+      - OPENAI_API_KEY=${OPENAI_API_KEY}
+      - API_SECRET_KEY=${API_SECRET_KEY}
+      - EVOLUTION_API_URL=${EVOLUTION_API_URL}
+      - EVOLUTION_API_KEY=${EVOLUTION_API_KEY}
+      - REDIS_URL=redis://redis:6379
+    volumes:
+      - ./api/uploads:/app/uploads
+    depends_on:
+      - redis
+    networks:
+      - clinica-network
+    deploy:
+      replicas: 2
+      update_config:
+        parallelism: 1
+        delay: 10s
+      restart_policy:
+        condition: on-failure
+
+  # Dashboard Admin
+  dashboard:
+    build:
+      context: .
+      dockerfile: Dockerfile.dashboard
+    container_name: clinica-dashboard
+    restart: unless-stopped
+    ports:
+      - "3000:80"
+    networks:
+      - clinica-network
+    deploy:
+      replicas: 1
+      restart_policy:
+        condition: on-failure
+
+  # PWA Cliente
+  pwa:
+    build:
+      context: ./pwa-cliente
+      dockerfile: Dockerfile
+    container_name: clinica-pwa
+    restart: unless-stopped
+    ports:
+      - "3001:80"
+    networks:
+      - clinica-network
+    deploy:
+      replicas: 1
+      restart_policy:
+        condition: on-failure
+
+  # Redis (para Celery e cache)
+  redis:
+    image: redis:7-alpine
+    container_name: clinica-redis
+    restart: unless-stopped
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis-data:/data
+    networks:
+      - clinica-network
+    deploy:
+      replicas: 1
+      restart_policy:
+        condition: on-failure
+
+  # Celery Worker (tarefas em background)
+  celery-worker:
+    build:
+      context: ./api
+      dockerfile: Dockerfile
+    container_name: clinica-celery-worker
+    restart: unless-stopped
+    command: celery -A app.core.celery_app worker --loglevel=info
+    environment:
+      - SUPABASE_URL=${SUPABASE_URL}
+      - SUPABASE_KEY=${SUPABASE_KEY}
+      - SUPABASE_SERVICE_ROLE_KEY=${SUPABASE_SERVICE_ROLE_KEY}
+      - OPENAI_API_KEY=${OPENAI_API_KEY}
+      - REDIS_URL=redis://redis:6379
+    depends_on:
+      - redis
+    networks:
+      - clinica-network
+    deploy:
+      replicas: 2
+      restart_policy:
+        condition: on-failure
+
+  # Celery Beat (agendador)
+  celery-beat:
+    build:
+      context: ./api
+      dockerfile: Dockerfile
+    container_name: clinica-celery-beat
+    restart: unless-stopped
+    command: celery -A app.core.celery_app beat --loglevel=info
+    environment:
+      - SUPABASE_URL=${SUPABASE_URL}
+      - SUPABASE_KEY=${SUPABASE_KEY}
+      - SUPABASE_SERVICE_ROLE_KEY=${SUPABASE_SERVICE_ROLE_KEY}
+      - REDIS_URL=redis://redis:6379
+    depends_on:
+      - redis
+    networks:
+      - clinica-network
+    deploy:
+      replicas: 1
+      restart_policy:
+        condition: on-failure
+
+  # Nginx Reverse Proxy
+  nginx:
+    image: nginx:alpine
+    container_name: clinica-nginx
+    restart: unless-stopped
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./nginx-proxy.conf:/etc/nginx/nginx.conf
+      - ./ssl:/etc/nginx/ssl
+    depends_on:
+      - api
+      - dashboard
+      - pwa
+    networks:
+      - clinica-network
+    deploy:
+      replicas: 1
+      restart_policy:
+        condition: on-failure
+
+volumes:
+  redis-data:
+
+networks:
+  clinica-network:
+    driver: overlay
